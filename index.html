@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Laurine Garreau — UX/UI Designer</title>
+  <meta name="description" content="Portfolio de Laurine Garreau, UX/UI designer à Nantes. En recherche d'une alternance UX/UI à partir de septembre 2026.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <!-- Active l'intro avant le premier affichage (évite un flash de la page finale) -->
+  <script>if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('intro-on');</script>
+</head>
+<body>
+
+<!-- Intro d'ouverture (pilotée par main.js) -->
+<div class="intro" aria-hidden="true">
+  <p class="intro-word">Laurine Garreau</p>
+</div>
+
+<header class="site-header">
+  <div class="wrap">
+    <nav class="nav" aria-label="Navigation principale">
+      <a href="#projets">Projets</a>
+      <a href="#a-propos">À propos</a>
+      <a href="laboratoire.html">Laboratoire</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="badge" href="index.html" aria-label="Accueil — Laurine Garreau">
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <defs><path id="circle" d="M50 50 m-38 0 a38 38 0 1 1 76 0 a38 38 0 1 1 -76 0"/></defs>
+        <text><textPath href="#circle">Garreau · Laurine · UX/UI ·</textPath></text>
+      </svg>
+      <span class="mono">L</span>
+    </a>
+    <div class="header-right">
+      <a class="cv" href="https://www.figma.com/proto/NyRIYvtgNdDFz6KFyx5s1b/CV-GARREAU-Laurine?page-id=0%3A1&amp;node-id=271-211&amp;p=f&amp;viewport=-490%2C-6%2C0.79&amp;t=kCUq4VxKiO7g0X0h-1&amp;scaling=scale-down&amp;content-scaling=fixed" target="_blank" rel="noopener">Mon CV ↗</a>
+      <a class="btn" href="#contact">Me contacter</a>
+      <button class="menu-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow hero-hello">Bonjour, je suis</p>
+      <h1 class="display hero-title">
+        <!-- Les .perch sont des ancres de largeur nulle : l'objet est posé par-dessus le texte (sur le haut des
+             minuscules, dans un blanc ou en bord de mot), sans décaler les lettres. Comme il est dans la ligne,
+             il arrive avec elle au chargement. -->
+        <span class="line">La<span class="perch"><a class="deco deco--mouse" href="module-import.html" aria-label="Projet Module d'import"><img src="assets/img/deco/souris.svg" alt=""></a></span>urine Gar<span class="perch"><a class="deco deco--figma" href="assistant-metier.html" aria-label="Projet L'assistant métier"><img src="assets/img/deco/figma.svg" alt=""></a></span>reau</span>
+        <span class="line line--role"><span class="perch"><a class="deco deco--phone" href="splits.html" aria-label="Projet Splits"><img src="assets/img/deco/telephone.svg" alt=""></a></span>UX/UI <span class="perch"><a class="deco deco--cursor" href="laboratoire.html" aria-label="Le Laboratoire"><img src="assets/img/deco/curseur.svg" alt=""></a></span>designer</span>
+      </h1>
+      <div class="hero-meta">
+        <p>Étudiante à l'École de design Nantes Atlantique, je conçois des interfaces qui cherchent l'équilibre entre <strong>esthétique</strong>, <strong>lisibilité</strong> et <strong>usage</strong>, avec un soin particulier porté aux détails.</p>
+        <span class="status">En recherche d'alternance — septembre 2026</span>
+      </div>
+      <div class="tiles">
+        <a class="tile" href="module-import.html">
+          <img src="assets/img/module-sketch.webp" alt="Croquis de parcours utilisateur sur papier">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>Recherche utilisateur</span>
+        </a>
+        <a class="tile" href="assistant-metier.html">
+          <img src="assets/img/assistant-palette.webp" alt="Palette de bleus du design system de l'assistant métier">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>Design system</span>
+        </a>
+        <a class="tile" href="module-import.html">
+          <img src="assets/img/module-laptop.webp" alt="Module d'import affiché sur un ordinateur portable">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4l7 17 2.5-7.5L21 11z"/></svg>Prototypage &amp; tests</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Statement + sélecteur -->
+  <section class="section" id="projets">
+    <div class="wrap">
+      <h2 class="display statement reveal">Transformer la complexité en parcours <span class="it">fluides</span> et intuitifs.</h2>
+
+      <div class="selector" data-selector>
+        <div class="selector-list reveal" role="tablist" aria-label="Projets">
+          <button class="pill" role="tab" aria-selected="true"
+            data-title="Module d'import" data-href="module-import.html"
+            data-text="Stage chez un éditeur d'ERP pour l'agroalimentaire : repenser la migration des données en un parcours fluide et 100% autonome.">
+            <span class="num">01</span>Module d'import</button>
+          <button class="pill" role="tab" aria-selected="false"
+            data-title="Splits" data-href="splits.html"
+            data-text="Une application de course gamifiée qui transforme un sport individuel en conquête territoriale collective.">
+            <span class="num">02</span>Splits</button>
+          <button class="pill" role="tab" aria-selected="false"
+            data-title="L'assistant métier" data-href="assistant-metier.html"
+            data-text="Workshop avec Cegedim : intégrer une IA proactive dans SY Pharma pour simplifier commande, livraison et RH.">
+            <span class="num">03</span>Assistant métier</button>
+          <button class="pill" role="tab" aria-selected="false"
+            data-title="Le Laboratoire" data-href="laboratoire.html"
+            data-text="Explorations visuelles : 3D, stop motion, illustration, identité de marque. Une archive vivante de ma pratique.">
+            <span class="num">04</span>Laboratoire</button>
+        </div>
+        <div class="selector-stage reveal">
+          <div class="stage-frame">
+            <img class="is-active" src="assets/img/module-cover.webp" alt="Écrans du module d'import">
+            <img src="assets/img/splits-cover.webp" alt="Deux iPhone affichant l'application Splits">
+            <img src="assets/img/assistant-thumb.webp" alt="Écrans de l'assistant métier">
+            <img src="assets/img/labo-room.webp" alt="Chambre isométrique modélisée en 3D">
+          </div>
+          <div class="stage-info">
+            <div>
+              <h3 class="display h3" data-stage-title>Module d'import</h3>
+              <p data-stage-text>Stage chez un éditeur d'ERP pour l'agroalimentaire : repenser la migration des données en un parcours fluide et 100% autonome.</p>
+            </div>
+            <a class="btn" href="module-import.html" data-stage-link>Voir le projet
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chiffres -->
+  <section class="section section--tight">
+    <div class="wrap story">
+      <div class="reveal">
+        <div class="counters">
+          <div class="counter"><b data-count="4" data-pad="2">04</b><small>projets présentés</small></div>
+          <div class="counter"><b data-count="8" data-pad="2">08</b><small>compétences clés</small></div>
+          <div class="counter"><b data-count="2026">2026</b><small>début d'alternance</small></div>
+        </div>
+        <h2 class="display h2">Curiosité, détails <span class="it">&amp;</span> rigueur.</h2>
+        <p class="lead">Créer a toujours fait partie de moi : dessin, couture, poterie, crochet… Autant de pratiques qui ont aiguisé mon attention aux formes, aux matières et aux détails. Puis les jeux vidéo m'ont ouvert la porte du numérique — et Figma a été une révélation.</p>
+        <a class="btn" href="#a-propos">En savoir plus
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="story-photo reveal"><img src="assets/img/module-ideation-3.webp" alt="Atelier d'idéation : croquis de parcours sur papier"></div>
+    </div>
+  </section>
+
+  <!-- Index des projets -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2 class="display h2">Index</h2>
+        <p class="eyebrow">Projets 2025 — 2026</p>
+      </div>
+      <div class="projects">
+        <a class="card reveal" href="module-import.html">
+          <img src="assets/img/module-thumb.webp" alt="Écrans du module d'import" loading="lazy">
+          <div class="card-body">
+            <div><small>Projet 01 · Stage · 2025</small><h3 class="display">Module d'import</h3></div>
+            <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </a>
+        <a class="card reveal" href="splits.html">
+          <img src="assets/img/splits-thumb.webp" alt="Application Splits sur iPhone" loading="lazy">
+          <div class="card-body">
+            <div><small>Projet 02 · Cas d'étude · 2026</small><h3 class="display">Splits</h3></div>
+            <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </a>
+        <a class="card reveal" href="assistant-metier.html">
+          <img src="assets/img/assistant-thumb.webp" alt="Écrans de l'assistant métier" loading="lazy">
+          <div class="card-body">
+            <div><small>Projet 03 · Workshop · 2025</small><h3 class="display">L'assistant métier</h3></div>
+            <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </a>
+        <a class="card reveal" href="laboratoire.html">
+          <img src="assets/img/labo-room.webp" alt="Chambre isométrique modélisée en 3D" loading="lazy">
+          <div class="card-body">
+            <div><small>Projet 04 · Explorations · En cours</small><h3 class="display">Le Laboratoire</h3></div>
+            <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- À propos -->
+  <section class="section section--dark" id="a-propos">
+    <div class="wrap about">
+      <div class="about-text reveal">
+        <p class="eyebrow">À propos</p>
+        <h2 class="display h2" style="margin-bottom:28px">Garreau Laurine</h2>
+        <p>Créer a toujours fait partie de moi. Dès mon plus jeune âge, j'ai exploré différents médiums : dessin, couture, poterie, peinture, crochet, création de maisons miniatures… Autant de pratiques qui ont aiguisé mon <strong>attention aux formes</strong>, aux matières et aux <strong>détails</strong>.</p>
+        <p>Cette curiosité s'est naturellement étendue au numérique. Les jeux vidéo ont été ma première porte d'entrée, éveillant mon intérêt pour les <strong>parcours utilisateur</strong>, <strong>l'ergonomie</strong> et la façon dont une interface peut guider intuitivement. À <strong>l'École de design Nantes Atlantique</strong>, la découverte de Figma a été une révélation : j'y ai trouvé un équilibre parfait entre <strong>réflexion</strong>, <strong>structure</strong> et <strong>création</strong>.</p>
+        <p>Aujourd'hui, je conçois des <strong>interfaces</strong> en cherchant constamment l'équilibre entre <strong>esthétique</strong>, lisibilité et usage, avec un soin particulier porté à la <strong>cohérence</strong> et <strong>aux détails</strong>.</p>
+        <p>Curieuse et en <strong>apprentissage permanent</strong>, je recherche une <strong>alternance en UX/UI design dans le cadre de mon Master de deux ans à partir de septembre 2026</strong>, pour développer mes compétences au sein de projets concrets et enrichissants.</p>
+        <ul class="contact-list">
+          <li><a href="tel:+33769910576"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>07 69 91 05 76</a></li>
+          <li><a href="mailto:garreau.laurine@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>garreau.laurine@gmail.com</a></li>
+          <li><a href="https://www.linkedin.com/in/laurine-garreau-912156328/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg>Mon LinkedIn</a></li>
+          <li><a href="https://www.figma.com/proto/NyRIYvtgNdDFz6KFyx5s1b/CV-GARREAU-Laurine?page-id=0%3A1&amp;node-id=271-211&amp;p=f&amp;viewport=-490%2C-6%2C0.79&amp;t=kCUq4VxKiO7g0X0h-1&amp;scaling=scale-down&amp;content-scaling=fixed" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>Mon CV</a></li>
+        </ul>
+      </div>
+
+      <div class="bento reveal">
+        <div class="skill">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+          <div><h4>Curiosité &amp; force de proposition</h4><p>Veille continue, expérimentation d'outils et capacité à proposer des solutions pertinentes et innovantes.</p></div>
+        </div>
+        <div class="skill">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="9" cy="8" r="3.5"/><path d="M3 20a6 6 0 0 1 12 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6 6 0 0 1 3 6"/></svg>
+          <div><h4>UI &amp; design inclusif</h4><p>Interfaces esthétiques et centrées sur l'humain, hiérarchie visuelle et normes d'accessibilité (RGAA) pour un web ouvert à tous.</p></div>
+        </div>
+        <div class="skill skill--photo"><img src="assets/img/laurine.webp" alt="Portrait de Laurine Garreau" loading="lazy"></div>
+        <div class="skill">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M12 8l1.2 2.8L16 12l-2.8 1.2L12 16l-1.2-2.8L8 12l2.8-1.2z"/></svg>
+          <div><h4>Esprit d'analyse</h4><p>Comprendre des problématiques complexes, structurer l'information et prendre des décisions de design argumentées.</p></div>
+        </div>
+        <div class="skill">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 3a9 9 0 1 0 0 18c1.5 0 2-1 2-2 0-1.5-1-2 0-3s2 0 3.5 0A3.5 3.5 0 0 0 21 12a9 9 0 0 0-9-9z"/><circle cx="7.5" cy="11" r="1"/><circle cx="11" cy="7" r="1"/><circle cx="16" cy="8.5" r="1"/></svg>
+          <div><h4>Design system</h4><p>Interfaces cohérentes et maintenables grâce à des composants réutilisables et des règles UI claires.</p></div>
+        </div>
+        <div class="skill">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M4 4l7 17 2.5-7.5L21 11z"/></svg>
+          <div><h4>Prototypage &amp; tests</h4><p>Wireframes et prototypes interactifs (Figma), tests utilisateurs pour valider les parcours et améliorer l'expérience.</p></div>
+        </div>
+        <div class="skill">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 3 4 7.5v9L12 21l8-4.5v-9zM4 7.5l8 4.5 8-4.5M12 12v9"/></svg>
+          <div><h4>Collaboration &amp; communication</h4><p>Travail en équipe pluridisciplinaire, animation d'ateliers, échanges avec clients et parties prenantes.</p></div>
+        </div>
+        <div class="skill skill--wide">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 20s-8-4.5-8-10.5A4.5 4.5 0 0 1 12 7a4.5 4.5 0 0 1 8 2.5C20 15.5 12 20 12 20z"/></svg>
+          <div><h4>Recherche utilisateur</h4><p>Entretiens, observations terrain, benchmark et analyse des besoins pour orienter les choix de conception et réduire les frictions.</p></div>
+        </div>
+        <div class="skill">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h3"/></svg>
+          <div><h4>Autonomie &amp; rigueur</h4><p>Organisation, gestion des priorités et suivi de projet, en contexte professionnel et académique.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section contact" id="contact">
+    <div class="wrap">
+      <p class="eyebrow reveal" style="position:relative">Travaillons ensemble</p>
+      <h2 class="display contact-title reveal">Me<span class="it">r</span>ci</h2>
+
+      <div class="contact-grid">
+        <div class="contact-aside reveal">
+          <p class="lead">Une alternance, un projet ou simplement une question ? Laissez-moi un message, je vous réponds rapidement.</p>
+          <ul class="contact-direct">
+            <li><span>E-mail</span><a href="mailto:garreau.laurine@gmail.com">garreau.laurine@gmail.com</a></li>
+            <li><span>Téléphone</span><a href="tel:+33769910576">07 69 91 05 76</a></li>
+            <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/laurine-garreau-912156328/" target="_blank" rel="noopener">laurine-garreau ↗</a></li>
+          </ul>
+        </div>
+
+        <!-- Envoi via FormSubmit (formsubmit.co) : chaque message arrive par e-mail à l'adresse de l'action.
+             Le tout premier envoi déclenche un e-mail d'activation à confirmer une seule fois. -->
+        <form class="contact-form reveal" action="https://formsubmit.co/garreau.laurine@gmail.com" method="POST" novalidate data-contact-form>
+          <input type="hidden" name="_subject" value="Nouveau message depuis le portfolio">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+          <div class="field-row">
+            <div class="field">
+              <label for="f-name">Nom et prénom</label>
+              <input id="f-name" name="Nom" type="text" autocomplete="name" required placeholder="Camille Martin">
+              <p class="field-error" aria-live="polite"></p>
+            </div>
+            <div class="field">
+              <label for="f-email">E-mail</label>
+              <input id="f-email" name="email" type="email" autocomplete="email" required placeholder="camille@entreprise.fr">
+              <p class="field-error" aria-live="polite"></p>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="f-company">Entreprise ou école <span class="opt">(facultatif)</span></label>
+              <input id="f-company" name="Entreprise" type="text" autocomplete="organization" placeholder="Studio, agence, école…">
+            </div>
+            <div class="field">
+              <label for="f-topic">Objet</label>
+              <select id="f-topic" name="Objet">
+                <option>Proposition d'alternance</option>
+                <option>Projet ou collaboration</option>
+                <option>Question sur un projet</option>
+                <option>Autre</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-message">Message</label>
+            <textarea id="f-message" name="Message" rows="5" required placeholder="Bonjour Laurine, …"></textarea>
+            <p class="field-error" aria-live="polite"></p>
+          </div>
+
+          <div class="form-foot">
+            <button class="btn btn--solid" type="submit">
+              <span class="btn-label">Envoyer le message</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+            <p class="form-status" role="status" aria-live="polite"></p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© <span data-year>2026</span> Garreau Laurine — UX/UI Designer</span>
+    <span>Portfolio 2025 / 2026</span>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

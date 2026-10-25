@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="36 -4 120 142" fill="#f7f8fb" stroke="#1c2230" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- éclats du clic -->
+  <path fill="none" d="M62 22l-10-10M56 44H40M78 14V0"/>
+  <!-- épaisseur -->
+  <path d="M74 30l70 44-32 6 22 40-18 9-21-40-21 23z" transform="translate(6 6)" fill="#1c2230"/>
+  <!-- flèche -->
+  <path d="M74 30l70 44-32 6 22 40-18 9-21-40-21 23z"/>
+</svg>

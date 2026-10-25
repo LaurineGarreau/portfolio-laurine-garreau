@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="52 -2 102 128" stroke="#1c2230" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round">
+  <g transform="rotate(10 100 75)">
+    <!-- épaisseur -->
+    <g fill="#1c2230" transform="translate(6 6)">
+      <path d="M100 6H82a18 18 0 0 0 0 36h18z"/>
+      <path d="M100 6h18a18 18 0 0 1 0 36h-18z"/>
+      <path d="M100 42H82a18 18 0 0 0 0 36h18z"/>
+      <circle cx="118" cy="60" r="18"/>
+      <path d="M100 78H82a18 18 0 1 0 18 18z"/>
+    </g>
+    <!-- logo -->
+    <path fill="#f24e1e" d="M100 6H82a18 18 0 0 0 0 36h18z"/>
+    <path fill="#ff7262" d="M100 6h18a18 18 0 0 1 0 36h-18z"/>
+    <path fill="#a259ff" d="M100 42H82a18 18 0 0 0 0 36h18z"/>
+    <circle fill="#1abcfe" cx="118" cy="60" r="18"/>
+    <path fill="#0acf83" d="M100 78H82a18 18 0 1 0 18 18z"/>
+  </g>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="42 -12 130 158" fill="#f7f8fb" stroke="#1c2230" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- câble -->
+  <path fill="none" d="M96 30c-6-14 4-22 20-20s30-4 34-14"/>
+  <g transform="rotate(-28 100 80)">
+    <!-- épaisseur -->
+    <path d="M70 48c0-26 66-26 66 0v62c0 34-66 34-66 0z" transform="translate(7 7)"/>
+    <path d="M70 70v40c0 34 66 34 66 0V70l7 7v40c0 34-66 34-66 0z" stroke="none" fill="#1c2230" opacity=".08"/>
+    <!-- coque -->
+    <path d="M70 48c0-26 66-26 66 0v62c0 34-66 34-66 0z"/>
+    <!-- boutons -->
+    <path fill="none" d="M70 66h66M103 29v37"/>
+    <!-- molette -->
+    <rect x="98" y="36" width="10" height="20" rx="5"/>
+    <path fill="none" stroke-width="1.6" d="M100 42h6M100 47h6M100 52h6"/>
+  </g>
+</svg>

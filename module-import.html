@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Module d'import — Laurine Garreau</title>
+  <meta name="description" content="Projet 01 — Stage : repenser la migration des données d'un ERP agroalimentaire en un parcours fluide et autonome.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <nav class="nav" aria-label="Navigation principale">
+      <a href="index.html#projets" aria-current="page">Projets</a>
+      <a href="index.html#a-propos">À propos</a>
+      <a href="laboratoire.html">Laboratoire</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <a class="badge" href="index.html" aria-label="Accueil — Laurine Garreau">
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <defs><path id="circle" d="M50 50 m-38 0 a38 38 0 1 1 76 0 a38 38 0 1 1 -76 0"/></defs>
+        <text><textPath href="#circle">Garreau · Laurine · UX/UI ·</textPath></text>
+      </svg>
+      <span class="mono">L</span>
+    </a>
+    <div class="header-right">
+      <a class="cv" href="https://www.figma.com/proto/NyRIYvtgNdDFz6KFyx5s1b/CV-GARREAU-Laurine?page-id=0%3A1&amp;node-id=271-211&amp;p=f&amp;viewport=-490%2C-6%2C0.79&amp;t=kCUq4VxKiO7g0X0h-1&amp;scaling=scale-down&amp;content-scaling=fixed" target="_blank" rel="noopener">Mon CV ↗</a>
+      <a class="btn" href="index.html#contact">Me contacter</a>
+      <button class="menu-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="project-hero">
+    <div class="wrap">
+      <a class="back" href="index.html#projets"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Tous les projets</a>
+      <p class="eyebrow">Projet 01 / 04</p>
+      <h1 class="display project-title">Module d'impo<span class="it">r</span>t</h1>
+      <p class="project-sub">Stage</p>
+
+      <div class="project-intro">
+        <p class="lead">Projet réalisé lors d'un stage chez un <strong>éditeur leader de solutions ERP pour l'agroalimentaire</strong>. La mission : repenser intégralement l'étape de migration des données de base (clients, articles, etc.) lors du déploiement du logiciel. L'objectif : transformer une phase technique complexe en un parcours <strong>fluide, intuitif et 100% autonome</strong> pour l'utilisateur final.</p>
+        <dl class="meta">
+          <dt>Durée</dt><dd>2 mois</dd>
+          <dt>Équipe</dt><dd>Équipe Design</dd>
+          <dt>Outils</dt><dd><span class="tag">Figma</span> <span class="tag">Notion</span></dd>
+          <dt>Année</dt><dd>2025</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="project-cover reveal"><img src="assets/img/module-cover.webp" alt="Écrans du module d'import : choix du type de données et confirmation d'import"></div>
+
+    <div class="chapters">
+      <article class="chapter">
+        <div class="chapter-text reveal">
+          <span class="num">01</span>
+          <h2 class="display h3">Design process</h2>
+          <h3>Processus</h3>
+          <ul>
+            <li><strong>Recherche &amp; analyse :</strong> onboarding produit (ERP Web Cloud), audit de l'ERP Legacy et analyse des outils sources (MEG, Sage, Excel).</li>
+            <li><strong>Immersion terrain :</strong> interviews des consultants et entretiens avec des clients pilotes.</li>
+            <li><strong>Idéation :</strong> ateliers créatifs (Sketching, Crazy 8) pour imaginer l'automatisation.</li>
+            <li><strong>Prototypage :</strong> wireframes basse fidélité, puis prototypes interactifs haute fidélité.</li>
+            <li><strong>Validation :</strong> tests utilisateurs avec les clients pilotes et ajustements.</li>
+          </ul>
+          <h3>Problématique</h3>
+          <blockquote>Comment transformer une migration technique lourde en une expérience fluide et guidée pour l'utilisateur ?</blockquote>
+          <h3>Vision &amp; réflexion</h3>
+          <p>Pour innover, il a fallu comprendre d'où venaient les données et pourquoi elles posaient problème.</p>
+          <p><strong>L'héritage :</strong> identification des limites et des points de rupture lors de l'extraction et de l'import des données dans les anciens systèmes.<br>
+          <strong>L'amont :</strong> étude des outils utilisés par les clients avant la migration (Sage, Excel, MEG) pour comprendre ce qu'ils extraient réellement.</p>
+          <p><strong>Benchmark &amp; veille :</strong> analyse des solutions modernes de « self-onboarding » (Pennylane, Qonto, Notion) pour identifier les meilleures pratiques d'accompagnement et d'automatisation.</p>
+        </div>
+        <div class="gallery reveal">
+          <button class="shot full contain"><img src="assets/img/module-parcours.webp" alt="Parcours actuel du client en cinq étapes" loading="lazy"></button>
+          <button class="shot full contain"><img src="assets/img/module-frustrations.webp" alt="Synthèse : les plus grandes frustrations des clients" loading="lazy"></button>
+          <button class="shot contain"><img src="assets/img/module-benchmark.webp" alt="Tableau comparatif des logiciels sources" loading="lazy"></button>
+          <button class="shot contain"><img src="assets/img/module-modernes.webp" alt="Tableau comparatif des solutions modernes" loading="lazy"></button>
+        </div>
+      </article>
+
+      <article class="chapter">
+        <div class="chapter-text reveal">
+          <span class="num">02</span>
+          <h2 class="display h3">User flow</h2>
+          <h3>Parcours idéal</h3>
+          <p>J'ai réalisé un <strong>mapping comparatif</strong> entre le <strong>parcours actuel</strong> (complexe, dépendant des consultants) et le <strong>parcours idéal</strong> (autonome, automatisé).</p>
+          <p>Ce travail a permis de détecter les <strong>moments critiques</strong> où l'IA peut intervenir, notamment via la <strong>reconnaissance de documents</strong> et le mapping automatique des colonnes, pour réduire drastiquement la <strong>charge mentale</strong> de l'utilisateur.</p>
+        </div>
+        <div class="gallery reveal">
+          <button class="shot full contain"><img src="assets/img/module-userflow.webp" alt="User flow du parcours d'import" loading="lazy"></button>
+          <button class="shot full"><img src="assets/img/module-sketch.webp" alt="Croquis du parcours idéal sur papier" loading="lazy"></button>
+        </div>
+      </article>
+
+      <article class="chapter">
+        <div class="chapter-text reveal">
+          <span class="num">03</span>
+          <h2 class="display h3">Wireframes</h2>
+          <h3>Idéation</h3>
+          <p>J'ai animé un <strong>atelier d'idéation</strong> (Sketching, Crazy 8) pour co-concevoir le <strong>parcours utilisateur idéal</strong>. Ce travail collaboratif a permis de transformer les besoins identifiés en une <strong>expérience fluide, sans friction</strong>.</p>
+          <h3>Wireframes</h3>
+          <p>J'ai ensuite traduit cette vision en <strong>wireframes</strong>, puis en <strong>prototypes interactifs haute fidélité</strong> sur Figma. Le défi : intégrer des fonctionnalités complexes (IA, feedbacks d'erreurs) tout en <strong>respectant le Design System de l'ERP</strong>.</p>
+        </div>
+        <div class="gallery reveal">
+          <button class="shot two"><img src="assets/img/module-ideation.webp" alt="Notes d'atelier d'idéation" loading="lazy"></button>
+          <button class="shot four"><img src="assets/img/module-wireframes.webp" alt="Wireframes du module d'import" loading="lazy"></button>
+          <button class="shot four"><img src="assets/img/module-ideation-2.webp" alt="Croquis de parcours réalisés en atelier" loading="lazy"></button>
+          <button class="shot two"><img src="assets/img/module-ideation-3.webp" alt="Feuille de croquis Crazy 8" loading="lazy"></button>
+        </div>
+      </article>
+
+      <article class="chapter">
+        <div class="chapter-text reveal">
+          <span class="num">04</span>
+          <h2 class="display h3">Identité visuelle</h2>
+          <h3>Fiabilité et accompagnement</h3>
+          <p>Le module devait s'intégrer parfaitement à l'ERP tout en signalant visuellement les <strong>zones d'innovation</strong> :</p>
+          <ul>
+            <li><strong>Design System :</strong> utilisation rigoureuse des composants Figma de l'entreprise.</li>
+            <li><strong>Statuts de données :</strong> codes visuels clairs pour distinguer les données « automatiquement reconnues » des données « à vérifier ».</li>
+            <li><strong>UX Writing :</strong> un ton pédagogique et rassurant pour accompagner l'utilisateur dans l'import de ses données stratégiques.</li>
+          </ul>
+        </div>
+        <div class="gallery reveal">
+          <button class="shot full grey"><img src="assets/img/module-design-system.webp" alt="Comparaison sans et avec le design system" loading="lazy"></button>
+          <button class="shot full grey contain"><img src="assets/img/module-ecrans.webp" alt="Vue d'ensemble des écrans dans Figma" loading="lazy"></button>
+        </div>
+      </article>
+
+      <article class="chapter">
+        <div class="chapter-text reveal">
+          <span class="num">05</span>
+          <h2 class="display h3">Concept final</h2>
+          <p>Une expérience de <strong>reprise de données</strong> repensée comme un <strong>assistant intelligent</strong>, utilisant la <strong>reconnaissance de fichiers</strong> et l'Open Data pour automatiser la saisie.</p>
+          <h3>Piliers du concept</h3>
+          <ul>
+            <li><strong>Reconnaissance intelligente :</strong> l'IA analyse les fichiers extraits (Sage, Excel) et mappe automatiquement les champs (articles, clients).</li>
+            <li><strong>Parcours guidé « step-by-step » :</strong> une interface modulaire qui segmente la complexité et permet de traiter les erreurs de manière isolée et simple.</li>
+            <li><strong>Autonomie totale :</strong> réduction de la dépendance aux consultants lors du déploiement, le client pilote sa propre migration.</li>
+          </ul>
+          <h3>La plus-value</h3>
+          <p>Ce projet a permis de confirmer la <strong>valeur ajoutée de l'UX</strong> dans un contexte industriel B2B complexe. En simplifiant la reprise de données, on réduit le <strong>temps de déploiement</strong> et on améliore immédiatement la <strong>satisfaction client</strong> dès le premier jour d'utilisation du logiciel.</p>
+          <a class="btn btn--solid proto" href="https://www.figma.com/proto/haHmTtaDipG5jtQzK8RhRv/Stage-copie?page-id=144%3A45884&amp;node-id=144-45937&amp;viewport=418%2C40%2C0.05&amp;t=55Q1iewSQ5cWNipy-1&amp;scaling=contain&amp;content-scaling=fixed" target="_blank" rel="noopener">Tester le prototype ↗</a>
+        </div>
+        <div class="gallery reveal">
+          <button class="shot full"><img src="assets/img/module-laptop.webp" alt="Module d'import sur ordinateur portable" loading="lazy"></button>
+          <button class="shot"><img src="assets/img/module-layers.webp" alt="Étapes du parcours en couches" loading="lazy"></button>
+          <button class="shot"><img src="assets/img/module-final-2.webp" alt="Tableau d'édition des données importées" loading="lazy"></button>
+          <button class="shot full"><img src="assets/img/module-final.webp" alt="Écrans finaux du module d'import" loading="lazy"></button>
+        </div>
+      </article>
+    </div>
+
+    <a class="next" href="splits.html">
+      <div><p class="eyebrow">Projet suivant</p><span class="display">Splits</span></div>
+      <span class="inline-img"><img src="assets/img/splits-thumb.webp" alt=""></span>
+    </a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© <span data-year>2026</span> Garreau Laurine — UX/UI Designer</span>
+    <a href="mailto:garreau.laurine@gmail.com">garreau.laurine@gmail.com</a>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
