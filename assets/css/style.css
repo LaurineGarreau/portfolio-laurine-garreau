@@ -213,12 +213,15 @@ p strong, li strong { font-weight: 700; }
 .hero { position: relative; padding: 0; overflow: hidden; }
 /* premier écran : tout ce qui présente Laurine tient dans la hauteur de la fenêtre (moins l'en-tête) */
 .hero-screen {
-  min-height: calc(100svh - 78px);
+  min-height: min(calc(100svh - 78px), 1000px); /* sur un très grand écran, pas de vide immense sous le titre */
   display: flex; flex-direction: column;
   padding: clamp(28px, 6vh, 72px) 0 clamp(28px, 6vh, 64px);
+  container-type: inline-size; /* le titre se règle sur la largeur de la colonne, pas de la fenêtre */
 }
 .hero-title {
-  font-size: clamp(34px, min(9.6vw, 21vh), 190px); /* reste grand, sans déborder d'un écran peu haut */
+  /* « Laurine Garreau » occupe toute la largeur de la colonne (≈ 6,4 em de long), sans dépasser un écran peu haut */
+  font-size: max(30px, min(calc(100cqw / 6.4), 24vh));
+  width: fit-content; /* la 2e ligne, calée à droite, s'aligne sur la fin du nom */
   font-weight: 500;
   letter-spacing: -.045em;
   line-height: .98;
@@ -644,6 +647,9 @@ html.intro-on { overflow: hidden; } /* sur html (et non body) pour que la goutti
 }
 
 /* Responsive ------------------------------------------------------------------ */
+/* très grands écrans : la colonne s'élargit pour ne pas laisser d'immenses marges vides */
+@media (min-width: 2000px) { :root { --max: 1720px; } }
+
 @media (max-width: 1024px) {
   .about-cols { grid-template-columns: 1fr; }
   .work { grid-template-columns: 44px 1fr 70px; }
