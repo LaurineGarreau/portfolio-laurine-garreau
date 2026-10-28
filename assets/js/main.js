@@ -18,30 +18,17 @@
     }));
   }
 
-  // Apparitions + compteurs
-  const animateCounter = el => {
-    const target = Number(el.dataset.count);
-    const pad = el.dataset.pad ? Number(el.dataset.pad) : 0;
-    const start = performance.now();
-    const step = now => {
-      const t = Math.min(1, (now - start) / 1600);
-      const v = Math.round(target * (1 - Math.pow(1 - t, 3)));
-      el.textContent = String(v).padStart(pad, '0');
-      if (t < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  };
+  // Apparitions au scroll (déclenchent aussi le tracé des annotations)
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (!e.isIntersecting) return;
       e.target.classList.add('is-in');
-      e.target.querySelectorAll('[data-count]').forEach(animateCounter);
       io.unobserve(e.target);
     });
   }, { threshold: .15, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-  // Illustrations du titre : petit saut au clic puis ouverture du projet, parallaxe au scroll
+  // Illustrations du titre : petit saut au clic puis ouverture du projet
   const decos = document.querySelectorAll('.deco');
   if (decos.length) {
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -53,39 +40,95 @@
       d.classList.add('is-pressed');
       setTimeout(() => { window.location.href = d.href; }, 480);
     }));
-    if (!reduce) {
-      const speeds = [-.12, .08, -.06, .1];
-      let ticking = false;
-      const parallax = () => {
-        const y = Math.min(window.scrollY, 900);
-        decos.forEach((d, i) => { d.style.translate = `0 ${(y * speeds[i % speeds.length]).toFixed(1)}px`; });
-        ticking = false;
-      };
+  }
+
+  // Liste des projets (accueil) : au survol d'un titre, l'image du projet apparaît et suit doucement la souris
+  const works = document.querySelector('[data-works]');
+  const peek = document.querySelector('.peek');
+  if (works && peek && window.matchMedia('(hover: hover)').matches) {
+    const img = peek.querySelector('img');
+    let x = 0, y = 0, px = 0, py = 0, running = false;
+    const follow = () => {
+      px += (x - px) * .16;
+      py += (y - py) * .16;
+      peek.style.left = px + 'px';
+      peek.style.top = py + 'px';
+      running = peek.classList.contains('is-on') || Math.abs(x - px) > .5;
+      if (running) requestAnimationFrame(follow);
+    };
+    const start = () => { if (!running) { running = true; requestAnimationFrame(follow); } };
+    works.addEventListener('mousemove', e => {
+      x = e.clientX + 40; y = e.clientY;
+      start();
+    });
+    works.querySelectorAll('[data-peek]').forEach(a => {
+      a.addEventListener('mouseenter', e => {
+        x = e.clientX + 40; y = e.clientY;
+        // l'aperçu apparaît directement sous la souris (même si on arrive en faisant défiler, sans bouger la souris)
+        if (!peek.classList.contains('is-on')) {
+          px = x; py = y;
+          peek.style.left = px + 'px';
+          peek.style.top = py + 'px';
+        }
+        img.src = a.dataset.peek;
+        peek.classList.add('is-on');
+        start();
+      });
+      a.addEventListener('mouseleave', () => peek.classList.remove('is-on'));
+    });
+    // en faisant défiler, la souris quitte le titre sans « mouseleave » fiable : on masque l'aperçu
+    window.addEventListener('scroll', () => {
+      const hovered = works.querySelector('[data-peek]:hover');
+      if (!hovered) peek.classList.remove('is-on');
+    }, { passive: true });
+  }
+
+  // À propos : les courbes de niveau se tracent au fil du défilement
+  const topo = document.querySelector('.topo-wrap');
+  if (topo) {
+    const lines = [...topo.querySelectorAll('path')];
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // chaque ligne démarre à un moment différent (réparti entre 0 et 45 % du trajet)
+    const starts = lines.map((_, i) => ((i * 37) % 100) / 100 * .45);
+    const SPAN = .55; // part du trajet pendant laquelle une ligne se dessine
+    let ticking = false;
+    const draw = () => {
+      ticking = false;
+      const r = topo.getBoundingClientRect();
+      // 0 quand le haut de la section entre en bas de l'écran, 1 quand son milieu atteint le milieu de l'écran
+      const p = Math.min(1, Math.max(0, (innerHeight - r.top) / (innerHeight / 2 + r.height / 2)));
+      lines.forEach((path, i) => {
+        const t = Math.min(1, Math.max(0, (p - starts[i]) / SPAN));
+        path.style.strokeDashoffset = (1 - t).toFixed(3);
+      });
+    };
+    if (reduce) lines.forEach(path => { path.style.strokeDashoffset = '0'; });
+    else {
       window.addEventListener('scroll', () => {
-        if (!ticking) { ticking = true; requestAnimationFrame(parallax); }
+        if (!ticking) { ticking = true; requestAnimationFrame(draw); }
       }, { passive: true });
+      window.addEventListener('resize', draw);
+      draw();
     }
   }
 
-  // Sélecteur de projets (accueil)
-  const selector = document.querySelector('[data-selector]');
-  if (selector) {
-    const tabs = selector.querySelectorAll('[role="tab"]');
-    const imgs = selector.querySelectorAll('.stage-frame img');
-    const title = selector.querySelector('[data-stage-title]');
-    const text = selector.querySelector('[data-stage-text]');
-    const link = selector.querySelector('[data-stage-link]');
-    const select = i => {
-      tabs.forEach((t, j) => t.setAttribute('aria-selected', i === j));
-      imgs.forEach((img, j) => img.classList.toggle('is-active', i === j));
-      const t = tabs[i];
-      title.textContent = t.dataset.title;
-      text.textContent = t.dataset.text;
-      link.href = t.dataset.href;
-    };
-    tabs.forEach((t, i) => {
-      t.addEventListener('click', () => select(i));
-      t.addEventListener('mouseenter', () => window.matchMedia('(hover: hover)').matches && select(i));
+  // Contact : copier l'adresse e-mail en un clic
+  const copy = document.querySelector('[data-copy]');
+  if (copy) {
+    const label = copy.textContent;
+    copy.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(copy.dataset.copy);
+        copy.textContent = 'Adresse copiée ✓';
+      } catch (err) {
+        // presse-papiers indisponible : on sélectionne l'adresse pour un Ctrl+C manuel
+        const range = document.createRange();
+        range.selectNodeContents(document.querySelector('.mail-link'));
+        getSelection().removeAllRanges();
+        getSelection().addRange(range);
+        copy.textContent = 'Ctrl+C pour copier';
+      }
+      setTimeout(() => { copy.textContent = label; }, 2200);
     });
   }
 
@@ -285,64 +328,6 @@
     handOff();
     await wait(D * .65 + after.length * 120 + 700 - D);
     cleanUp();
-  }
-
-  // Formulaire de contact : vérification des champs puis envoi par e-mail via FormSubmit (sans quitter la page)
-  const form = document.querySelector('[data-contact-form]');
-  if (form) {
-    const status = form.querySelector('.form-status');
-    const button = form.querySelector('button[type="submit"]');
-    const label = button.querySelector('.btn-label');
-    const messages = {
-      valueMissing: 'Ce champ est obligatoire.',
-      typeMismatch: 'Cette adresse e-mail ne semble pas valide.',
-    };
-    const check = input => {
-      const field = input.closest('.field');
-      const error = field.querySelector('.field-error');
-      const problem = Object.keys(messages).find(k => input.validity[k]);
-      field.classList.toggle('has-error', !!problem);
-      if (error) error.textContent = problem ? messages[problem] : '';
-      return !problem;
-    };
-    const required = [...form.querySelectorAll('[required]')];
-    // une fois signalé, un champ se revérifie pendant la saisie
-    required.forEach(input => input.addEventListener('input', () => {
-      if (input.closest('.field').classList.contains('has-error')) check(input);
-    }));
-    const setStatus = (html, kind) => {
-      status.innerHTML = html;
-      status.className = 'form-status' + (kind ? ' is-' + kind : '');
-    };
-
-    form.addEventListener('submit', async e => {
-      e.preventDefault();
-      const valid = required.map(check).every(Boolean);
-      if (!valid) {
-        form.querySelector('.has-error input, .has-error textarea').focus();
-        return;
-      }
-      button.disabled = true;
-      label.textContent = 'Envoi…';
-      setStatus('');
-      try {
-        const res = await fetch(form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/'), {
-          method: 'POST',
-          headers: { Accept: 'application/json' },
-          body: new FormData(form),
-        });
-        const data = await res.json().catch(() => ({}));
-        if (!res.ok || String(data.success) === 'false') throw new Error(data.message || res.status);
-        form.reset();
-        form.classList.add('is-sent');
-        label.textContent = 'Message envoyé';
-        setStatus('Merci ! Votre message est bien parti, je vous réponds très vite.', 'ok');
-      } catch (err) {
-        button.disabled = false;
-        label.textContent = 'Envoyer le message';
-        setStatus('Oups, l\'envoi n\'a pas fonctionné. Vous pouvez m\'écrire directement à <a href="mailto:garreau.laurine@gmail.com">garreau.laurine@gmail.com</a>.', 'error');
-      }
-    });
   }
 
   const year = document.querySelector('[data-year]');
