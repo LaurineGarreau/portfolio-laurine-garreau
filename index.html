@@ -145,22 +145,91 @@
           </div>
 
           <h3 class="list-title reveal">Ce que j'apporte</h3>
-          <!-- étiquettes courtes en deux groupes : se lit d'un coup d'œil, sur mobile comme sur ordinateur -->
+          <!-- étiquettes courtes en deux groupes ; un clic déploie, sous le groupe, une petite animation qui illustre
+               la compétence et une phrase d'explication (le contenu vient du <template> de chaque étiquette) -->
           <div class="skills reveal">
             <p class="skills-group">Savoir-faire</p>
-            <ul class="tags">
-              <li>Recherche utilisateur</li>
-              <li>Prototypage &amp; tests</li>
-              <li>Design system</li>
-              <li>UI &amp; accessibilité</li>
-            </ul>
+            <div class="skills-row">
+              <ul class="tags">
+                <li><button type="button" class="tag-btn" aria-expanded="false" aria-controls="skill-panel-1">Recherche utilisateur</button>
+                  <template>
+                    <svg class="ill ill--research" viewBox="0 0 120 80" aria-hidden="true">
+                      <g class="people"><circle cx="30" cy="36" r="6"/><path d="M19 58c2-8 6-11 11-11s9 3 11 11"/><circle cx="60" cy="36" r="6"/><path d="M49 58c2-8 6-11 11-11s9 3 11 11"/><circle cx="90" cy="36" r="6"/><path d="M79 58c2-8 6-11 11-11s9 3 11 11"/></g>
+                      <g class="loupe"><circle cx="60" cy="40" r="15"/><path d="M71 51l10 10"/></g>
+                    </svg>
+                    <p>Entretiens, observations terrain, benchmark : je pars des besoins réels des utilisateurs.</p>
+                  </template></li>
+                <li><button type="button" class="tag-btn" aria-expanded="false" aria-controls="skill-panel-1">Prototypage &amp; tests</button>
+                  <template>
+                    <svg class="ill ill--proto" viewBox="0 0 120 80" aria-hidden="true">
+                      <rect class="screen" x="34" y="6" width="52" height="68" rx="8"/>
+                      <path class="draw d1" d="M42 20h36"/><path class="draw d2" d="M42 30h24"/><rect class="draw d3 cta" x="42" y="52" width="36" height="12" rx="6"/>
+                      <path class="cursor" d="M92 64l0-16 12 11-7 0 4 8-3 1-4-8z"/>
+                    </svg>
+                    <p>Wireframes puis prototypes Figma interactifs, testés avec de vrais utilisateurs.</p>
+                  </template></li>
+                <li><button type="button" class="tag-btn" aria-expanded="false" aria-controls="skill-panel-1">Design system</button>
+                  <template>
+                    <svg class="ill ill--system" viewBox="0 0 120 80" aria-hidden="true">
+                      <rect class="piece p1" x="38" y="12" width="20" height="20" rx="5"/><rect class="piece p2" x="62" y="12" width="20" height="20" rx="10"/>
+                      <rect class="piece p3" x="38" y="36" width="20" height="20" rx="2"/><rect class="piece p4" x="62" y="36" width="20" height="20" rx="5"/>
+                      <path class="base" d="M34 66h52"/>
+                    </svg>
+                    <p>Des composants réutilisables et des règles claires, pour une interface cohérente.</p>
+                  </template></li>
+                <li><button type="button" class="tag-btn" aria-expanded="false" aria-controls="skill-panel-1">UI &amp; accessibilité</button>
+                  <template>
+                    <svg class="ill ill--a11y" viewBox="0 0 120 80" aria-hidden="true">
+                      <rect class="block" x="22" y="30" width="22" height="20" rx="4"/><rect class="block" x="49" y="30" width="22" height="20" rx="4"/><rect class="block" x="76" y="30" width="22" height="20" rx="4"/>
+                      <rect class="focus" x="18" y="26" width="30" height="28" rx="7"/>
+                    </svg>
+                    <p>Hiérarchie visuelle, contrastes et navigation au clavier (RGAA) : une interface pour tout le monde.</p>
+                  </template></li>
+              </ul>
+              <div class="skill-panel" id="skill-panel-1" role="region" aria-live="polite" hidden></div>
+            </div>
             <p class="skills-group">Savoir-être</p>
-            <ul class="tags">
-              <li>Esprit d'analyse</li>
-              <li>Collaboration</li>
-              <li>Curiosité</li>
-              <li>Autonomie &amp; rigueur</li>
-            </ul>
+            <div class="skills-row">
+              <ul class="tags">
+                <li><button type="button" class="tag-btn" aria-expanded="false" aria-controls="skill-panel-2">Esprit d'analyse</button>
+                  <template>
+                    <svg class="ill ill--analysis" viewBox="0 0 120 80" aria-hidden="true">
+                      <path class="axis" d="M26 66h70"/>
+                      <rect class="bar b1" x="32" y="40" width="10" height="26" rx="2"/><rect class="bar b2" x="48" y="28" width="10" height="38" rx="2"/>
+                      <rect class="bar b3" x="64" y="46" width="10" height="20" rx="2"/><rect class="bar b4" x="80" y="16" width="10" height="50" rx="2"/>
+                    </svg>
+                    <p>Structurer l'information et argumenter chaque choix de design.</p>
+                  </template></li>
+                <li><button type="button" class="tag-btn" aria-expanded="false" aria-controls="skill-panel-2">Collaboration</button>
+                  <template>
+                    <svg class="ill ill--collab" viewBox="0 0 120 80" aria-hidden="true">
+                      <path class="bubble left" d="M20 14h44a6 6 0 0 1 6 6v16a6 6 0 0 1-6 6H34l-8 8v-8h-6a6 6 0 0 1-6-6V20a6 6 0 0 1 6-6z"/>
+                      <path class="bubble right" d="M100 34H56a6 6 0 0 0-6 6v14a6 6 0 0 0 6 6h28l8 8v-8h8a6 6 0 0 0 6-6V40a6 6 0 0 0-6-6z"/>
+                      <circle class="dot t1" cx="68" cy="47" r="2.5"/><circle class="dot t2" cx="78" cy="47" r="2.5"/><circle class="dot t3" cx="88" cy="47" r="2.5"/>
+                    </svg>
+                    <p>Animer des ateliers, échanger avec les clients et l'équipe, construire ensemble.</p>
+                  </template></li>
+                <li><button type="button" class="tag-btn" aria-expanded="false" aria-controls="skill-panel-2">Curiosité</button>
+                  <template>
+                    <svg class="ill ill--curious" viewBox="0 0 120 80" aria-hidden="true">
+                      <path class="bulb" d="M60 14a18 18 0 0 0-10 33c3 2 4 5 4 8h12c0-3 1-6 4-8a18 18 0 0 0-10-33z"/>
+                      <path class="bulb-base" d="M54 61h12M56 67h8"/>
+                      <g class="rays"><path d="M60 4v-1"/><path d="M84 14l3-3"/><path d="M36 14l-3-3"/><path d="M92 34h4"/><path d="M28 34h-4"/></g>
+                    </svg>
+                    <p>Une veille continue, l'envie de tester de nouveaux outils et d'être force de proposition.</p>
+                  </template></li>
+                <li><button type="button" class="tag-btn" aria-expanded="false" aria-controls="skill-panel-2">Autonomie &amp; rigueur</button>
+                  <template>
+                    <svg class="ill ill--rigor" viewBox="0 0 120 80" aria-hidden="true">
+                      <rect class="box" x="30" y="12" width="12" height="12" rx="3"/><path class="line" d="M50 18h40"/><path class="tick k1" d="M33 18l3 3 5-6"/>
+                      <rect class="box" x="30" y="34" width="12" height="12" rx="3"/><path class="line" d="M50 40h32"/><path class="tick k2" d="M33 40l3 3 5-6"/>
+                      <rect class="box" x="30" y="56" width="12" height="12" rx="3"/><path class="line" d="M50 62h36"/><path class="tick k3" d="M33 62l3 3 5-6"/>
+                    </svg>
+                    <p>Prioriser, organiser et suivre un projet de bout en bout.</p>
+                  </template></li>
+              </ul>
+              <div class="skill-panel" id="skill-panel-2" role="region" aria-live="polite" hidden></div>
+            </div>
           </div>
 
           <p class="about-links reveal">

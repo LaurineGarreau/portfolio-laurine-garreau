@@ -416,15 +416,90 @@ p strong, li strong { font-weight: 700; }
 .skills { display: grid; grid-template-columns: auto 1fr; align-items: baseline; gap: 14px 24px; }
 .skills-group { margin: 0; font-size: 14px; color: var(--ink-soft); white-space: nowrap; }
 .tags { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
-.tags li {
+.tag-btn {
   padding: 7px 15px;
   border: 1px solid var(--accent-soft);
   border-radius: 999px;
   background: rgba(255, 255, 255, .8);
-  font-size: 15px; font-weight: 500; line-height: 1.3;
-  transition: background .3s, color .3s, border-color .3s;
+  font: inherit; font-size: 15px; font-weight: 500; line-height: 1.3; color: var(--ink);
+  cursor: pointer;
+  transition: background .3s, color .3s, border-color .3s, transform .3s var(--ease);
 }
-.tags li:hover { background: var(--accent-soft); border-color: var(--accent); color: var(--accent-strong); }
+.tag-btn:hover { background: var(--accent-soft); border-color: var(--accent); color: var(--accent-strong); }
+.tag-btn:active { transform: scale(.96); }
+.tag-btn:focus-visible { outline: 2px solid var(--accent-strong); outline-offset: 3px; }
+.tag-btn[aria-expanded="true"] { background: var(--accent-strong); border-color: var(--accent-strong); color: var(--white); }
+
+/* panneau déployé sous le groupe : l'illustration animée + une phrase */
+.skill-panel {
+  display: grid; grid-template-columns: 120px 1fr; gap: 6px 20px; align-items: center;
+  margin-top: 10px; padding: 12px 20px 12px 12px;
+  background: rgba(255, 255, 255, .85);
+  border: 1px solid var(--accent-soft); border-radius: 16px;
+  animation: panel-in .45s var(--ease);
+}
+.skill-panel[hidden] { display: none; }
+.skill-panel p { margin: 0; font-size: 15.5px; line-height: 1.45; color: var(--ink-soft); max-width: 46ch; }
+@keyframes panel-in { from { opacity: 0; transform: translateY(-8px); } }
+
+/* Illustrations : traits fins bleus, chaque partie s'anime sur elle-même */
+.ill { width: 120px; height: 80px; overflow: visible; fill: none; stroke: var(--accent-strong); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.ill * { transform-box: fill-box; transform-origin: center; }
+/* recherche : la loupe passe d'une personne à l'autre */
+.ill--research .people { stroke: var(--ink-soft); }
+.ill--research .loupe circle { fill: rgba(220, 232, 247, .55); }
+.ill--research .loupe { animation: ill-scan 2.6s ease-in-out infinite alternate; }
+@keyframes ill-scan { from { transform: translateX(-30px); } to { transform: translateX(30px); } }
+/* prototypage : l'écran se dessine, le curseur vient cliquer le bouton */
+.ill--proto .screen { stroke: var(--ink-soft); }
+.ill--proto .draw { stroke-dasharray: 120; stroke-dashoffset: 120; animation: ill-draw .7s var(--ease) forwards; }
+.ill--proto .d2 { animation-delay: .25s; } .ill--proto .d3 { animation-delay: .5s; }
+.ill--proto .cta { animation: ill-draw .7s .5s var(--ease) forwards, ill-press 2.4s 1.2s infinite; }
+.ill--proto .cursor { fill: var(--white); animation: ill-point 2.4s 1.2s var(--ease) infinite; }
+@keyframes ill-draw { to { stroke-dashoffset: 0; } }
+@keyframes ill-point { 0%, 15% { transform: translate(0, 0); } 45%, 70% { transform: translate(-30px, -6px); } 55% { transform: translate(-30px, -6px) scale(.85); } 100% { transform: translate(0, 0); } }
+@keyframes ill-press { 0%, 50%, 100% { fill: none; } 55%, 70% { fill: var(--accent-soft); } }
+/* design system : les composants viennent s'aligner sur la grille */
+.ill--system .piece { fill: var(--accent-soft); animation: ill-snap .8s var(--ease) backwards; }
+.ill--system .p1 { --x: -26px; --y: -10px; --r: -25deg; }
+.ill--system .p2 { --x: 28px; --y: -12px; --r: 30deg; animation-delay: .12s; }
+.ill--system .p3 { --x: -30px; --y: 14px; --r: 20deg; animation-delay: .24s; }
+.ill--system .p4 { --x: 26px; --y: 14px; --r: -20deg; animation-delay: .36s; }
+.ill--system .base { stroke: var(--ink-soft); }
+@keyframes ill-snap { from { opacity: 0; transform: translate(var(--x), var(--y)) rotate(var(--r)); } }
+/* accessibilité : le contour de focus passe d'un élément à l'autre, comme au clavier */
+.ill--a11y .block { stroke: var(--ink-soft); }
+.ill--a11y .focus { stroke-width: 2.5; animation: ill-tab 3s steps(1) infinite; }
+@keyframes ill-tab { 0% { transform: translateX(0); } 33% { transform: translateX(27px); } 66% { transform: translateX(54px); } }
+/* analyse : les barres montent */
+.ill--analysis .axis { stroke: var(--ink-soft); }
+.ill--analysis .bar { fill: var(--accent-soft); transform-origin: 50% 100%; animation: ill-grow .8s var(--ease) backwards; }
+.ill--analysis .b2 { animation-delay: .1s; } .ill--analysis .b3 { animation-delay: .2s; }
+.ill--analysis .b4 { animation-delay: .3s; fill: var(--accent); }
+@keyframes ill-grow { from { transform: scaleY(0); } }
+/* collaboration : les bulles apparaissent, quelqu'un écrit */
+.ill--collab .bubble { fill: var(--white); animation: ill-pop .5s cubic-bezier(.34, 1.56, .64, 1) backwards; }
+.ill--collab .left { transform-origin: 20% 100%; }
+.ill--collab .right { transform-origin: 80% 100%; animation-delay: .35s; }
+.ill--collab .dot { fill: var(--accent-strong); stroke: none; animation: ill-type 1.2s .8s infinite backwards; }
+.ill--collab .t2 { animation-delay: 1s; } .ill--collab .t3 { animation-delay: 1.2s; }
+@keyframes ill-pop { from { transform: scale(0); } }
+@keyframes ill-type { 0%, 100% { opacity: .25; } 40% { opacity: 1; } }
+/* curiosité : l'ampoule se dessine puis s'allume */
+.ill--curious .bulb { stroke-dasharray: 150; stroke-dashoffset: 150; animation: ill-draw .9s var(--ease) forwards, ill-glow 2s .9s ease-in-out infinite alternate; }
+.ill--curious .bulb-base { stroke: var(--ink-soft); }
+.ill--curious .rays { opacity: 0; animation: ill-rays 2s .9s ease-in-out infinite alternate; }
+@keyframes ill-glow { to { fill: rgba(107, 155, 216, .22); } }
+@keyframes ill-rays { from { opacity: 0; transform: scale(.85); } to { opacity: 1; transform: scale(1.05); } }
+/* rigueur : les cases se cochent une à une */
+.ill--rigor .box, .ill--rigor .line { stroke: var(--ink-soft); }
+.ill--rigor .tick { stroke-width: 2.5; stroke-dasharray: 14; stroke-dashoffset: 14; animation: ill-draw .35s ease-out forwards; }
+.ill--rigor .k1 { animation-delay: .3s; } .ill--rigor .k2 { animation-delay: .75s; } .ill--rigor .k3 { animation-delay: 1.2s; }
+@media (prefers-reduced-motion: reduce) {
+  .ill *, .skill-panel { animation: none !important; }
+  .ill .draw, .ill .bulb, .ill .tick { stroke-dashoffset: 0; }
+  .ill--curious .rays { opacity: 1; }
+}
 .about-links { display: flex; gap: 28px; flex-wrap: wrap; margin: 36px 0 0; font-family: var(--f-mono); font-size: 13px; letter-spacing: .04em; text-transform: uppercase; }
 .about-links a {
   text-decoration: none;
@@ -684,7 +759,10 @@ html.intro-on { overflow: hidden; } /* sur html (et non body) pour que la goutti
   .snap--portrait { position: relative; top: 0; max-width: 260px; margin-bottom: 70px; } /* place pour la note manuscrite */
   .skills { grid-template-columns: 1fr; gap: 10px; }
   .skills .tags + .skills-group { margin-top: 10px; }
-  .tags li { font-size: 14px; padding: 6px 13px; }
+  .tag-btn { font-size: 14px; padding: 6px 13px; }
+  .skill-panel { grid-template-columns: 96px 1fr; gap: 6px 14px; padding: 10px 14px 10px 8px; }
+  .skill-panel .ill { width: 96px; height: 64px; }
+  .skill-panel p { font-size: 14.5px; }
   .work { grid-template-columns: 34px 1fr 64px; align-items: center; }
   .work-thumb { display: block; grid-column: 2 / -1; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; margin-top: 4px; border-radius: var(--img-radius); }
   .project-intro, .chapter { grid-template-columns: 1fr; }

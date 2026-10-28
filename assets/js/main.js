@@ -153,6 +153,22 @@
     document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
   }
 
+  // Compétences : un clic sur une étiquette déploie son illustration sous le groupe (une seule ouverte par groupe ;
+  // re-cliquer referme). Le contenu est recopié depuis le <template>, ce qui relance les animations à chaque ouverture.
+  document.querySelectorAll('.skills-row').forEach(row => {
+    const panel = row.querySelector('.skill-panel');
+    const btns = [...row.querySelectorAll('.tag-btn')];
+    btns.forEach(btn => btn.addEventListener('click', () => {
+      const wasOpen = btn.getAttribute('aria-expanded') === 'true';
+      btns.forEach(b => b.setAttribute('aria-expanded', 'false'));
+      if (wasOpen) { panel.hidden = true; panel.replaceChildren(); return; }
+      btn.setAttribute('aria-expanded', 'true');
+      panel.replaceChildren(btn.parentElement.querySelector('template').content.cloneNode(true));
+      panel.setAttribute('aria-label', btn.textContent);
+      panel.hidden = false;
+    }));
+  });
+
   // Intro d'ouverture (accueil), sur le modèle de fischundtisch.de :
   // 1. le nom s'écrit lettre par lettre
   // 2. le badge « L » et les objets UX apparaissent en croix au centre
