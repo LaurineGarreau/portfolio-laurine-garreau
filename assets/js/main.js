@@ -171,9 +171,14 @@
     const easeOut = 'cubic-bezier(.22, .8, .2, 1)';
     const pop = 'cubic-bezier(.34, 1.56, .64, 1)';
     let skipped = false;
-    const wait = ms => new Promise(r => setTimeout(r, ms));
+    // Tempo global : la séquence est jouée à ~45 % de sa durée d'origine (≈ 2,5 s au lieu de 5,5 s)
+    const K = .45;
+    const wait = ms => new Promise(r => setTimeout(r, ms * K));
     const touched = [];
-    const anim = (el, frames, opts) => { touched.push(el); return el.animate(frames, { fill: 'forwards', ...opts }); };
+    const anim = (el, frames, opts) => {
+      touched.push(el);
+      return el.animate(frames, { fill: 'forwards', ...opts, duration: opts.duration * K, delay: (opts.delay || 0) * K });
+    };
     // flottement CSS des objets : mis en pause pendant l'intro pour que les copies atterrissent pile dessus
     const floats = decos.map(d => d.querySelector('img').getAnimations()).flat();
     floats.forEach(a => a.pause());
@@ -202,6 +207,10 @@
     };
     intro.addEventListener('click', skip);
     window.addEventListener('keydown', skip, { once: true });
+    // on ne retient pas ceux qui veulent déjà descendre
+    window.addEventListener('wheel', skip, { once: true, passive: true });
+    window.addEventListener('touchstart', skip, { once: true, passive: true });
+    try { sessionStorage.setItem('intro-vue', '1'); } catch (e) {} // une seule fois par visite
     if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
     window.scrollTo(0, 0);
     // les mesures de la phase 3 doivent se faire avec les vraies polices

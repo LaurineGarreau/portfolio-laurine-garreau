@@ -10,7 +10,8 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter+Tight:wght@300..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
   <!-- Active l'intro avant le premier affichage (évite un flash de la page finale) -->
-  <script>if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('intro-on');</script>
+  <!-- une seule fois par visite : en revenant d'une page projet, l'accueil s'affiche directement -->
+  <script>try { if (!matchMedia('(prefers-reduced-motion: reduce)').matches && !sessionStorage.getItem('intro-vue')) document.documentElement.classList.add('intro-on'); } catch (e) {}</script>
 </head>
 <body>
 
