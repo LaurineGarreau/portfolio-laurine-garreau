@@ -377,4 +377,12 @@
 
   const year = document.querySelector('[data-year]');
   if (year) year.textContent = new Date().getFullYear();
+
+  // Date de l'alternance recherchée : la prochaine rentrée de septembre (de janvier à août, celle de l'année ;
+  // à partir de septembre, celle de l'année suivante). Le texte du HTML reste la valeur par défaut sans JS.
+  const now = new Date();
+  const rentree = now.getMonth() < 8 ? now.getFullYear() : now.getFullYear() + 1;
+  document.querySelectorAll('[data-rentree]').forEach(el => {
+    el.textContent = (el.dataset.rentree === 'court' ? 'sept. ' : 'septembre ') + rentree;
+  });
 })();
