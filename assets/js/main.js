@@ -153,18 +153,21 @@
     document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
   }
 
-  // Compétences : dans chaque groupe, une illustration est toujours ouverte et passe toute seule à la suivante
-  // (le 2e groupe est décalé pour ne pas changer en même temps). Un clic choisit l'étiquette ; le défilement
+  // Compétences : une seule illustration ouverte à la fois, sous le groupe de l'étiquette active ; elle passe
+  // toute seule à la compétence suivante (Savoir-faire puis Savoir-être). Un clic choisit l'étiquette ; le défilement
   // reprend après une pause. Le contenu est recopié depuis le <template>, ce qui relance les animations.
-  const STEP = 4200;
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  document.querySelectorAll('.skills-row').forEach((row, r) => {
-    const panel = row.querySelector('.skill-panel');
-    const btns = [...row.querySelectorAll('.tag-btn')];
+  const skills = document.querySelector('.skills');
+  if (skills) {
+    const STEP = 4200;
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const btns = [...skills.querySelectorAll('.tag-btn')];
+    const panels = [...skills.querySelectorAll('.skill-panel')];
     let current = 0, timer = null, visible = false, hold = false;
     const show = (i, byUser) => {
       current = i;
+      const panel = btns[i].closest('.skills-row').querySelector('.skill-panel');
       btns.forEach((b, k) => b.setAttribute('aria-expanded', String(k === i)));
+      panels.forEach(p => { if (p !== panel) { p.hidden = true; p.replaceChildren(); p.classList.remove('is-auto'); } });
       panel.replaceChildren(btns[i].parentElement.querySelector('template').content.cloneNode(true));
       panel.setAttribute('aria-label', btns[i].textContent);
       panel.setAttribute('aria-live', byUser ? 'polite' : 'off'); // on n'annonce pas chaque changement automatique
@@ -173,6 +176,7 @@
       panel.classList.remove('is-auto'); void panel.offsetWidth;
       if (!reduce && !hold) panel.classList.add('is-auto'); // barre de progression jusqu'au changement
     };
+    const stop = () => { clearTimeout(timer); panels.forEach(p => p.classList.remove('is-auto')); };
     const schedule = delay => {
       clearTimeout(timer);
       if (reduce || !visible || hold) return;
@@ -183,17 +187,17 @@
       show(i, true);
       schedule(STEP * 2); // laisse le temps de lire ce qu'on a choisi
     }));
-    // pause tant que la souris ou le clavier est dans le groupe
-    row.addEventListener('pointerenter', () => { hold = true; clearTimeout(timer); panel.classList.remove('is-auto'); });
-    row.addEventListener('pointerleave', () => { hold = false; schedule(STEP); });
-    row.addEventListener('focusin', () => { hold = true; clearTimeout(timer); panel.classList.remove('is-auto'); });
-    row.addEventListener('focusout', e => { if (!row.contains(e.relatedTarget)) { hold = false; schedule(STEP); } });
-    // ne tourne que lorsque le groupe est à l'écran
+    // pause tant que la souris ou le clavier est sur les compétences
+    skills.addEventListener('pointerenter', () => { hold = true; stop(); });
+    skills.addEventListener('pointerleave', () => { hold = false; show(current); schedule(STEP); });
+    skills.addEventListener('focusin', () => { hold = true; stop(); });
+    skills.addEventListener('focusout', e => { if (!skills.contains(e.relatedTarget)) { hold = false; schedule(STEP); } });
+    // ne tourne que lorsque la section est à l'écran
     new IntersectionObserver(([e]) => {
       visible = e.isIntersecting;
-      if (visible) { show(current); schedule(STEP + r * STEP / 2); } else clearTimeout(timer);
-    }, { threshold: .3 }).observe(row);
-  });
+      if (visible) { show(current); schedule(STEP); } else clearTimeout(timer);
+    }, { threshold: .3 }).observe(skills);
+  }
 
   // Laboratoire : filtres par médium sur le mur d'images
   const labGrid = document.querySelector('.lab-grid');
