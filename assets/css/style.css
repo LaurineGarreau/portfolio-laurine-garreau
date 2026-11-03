@@ -610,6 +610,8 @@ p strong, li strong { font-weight: 700; }
 .shot.full { grid-column: span 6; }
 .shot.two { grid-column: span 2; }
 .shot.four { grid-column: span 4; }
+.shot.tall { grid-row: span 2; } /* image très haute (ex. palette) : à côté de deux images empilées */
+.gallery--dense { grid-auto-flow: dense; }
 .shot.contain img { object-fit: contain; }
 .shot.dark { background: var(--ink); }
 .shot.grey { background: #e3e9f2; }
@@ -822,6 +824,7 @@ html.intro-on { overflow: hidden; } /* sur html (et non body) pour que la goutti
   .project-intro, .chapter { grid-template-columns: 1fr; }
   .chapter-text { position: static; }
   .shot, .shot.two, .shot.four { grid-column: span 6; }
+  .shot.tall { grid-row: auto; }
   .shot.half-m { grid-column: span 3; }
   .next { grid-template-columns: 1fr; }
   .next .inline-img { display: none; }
