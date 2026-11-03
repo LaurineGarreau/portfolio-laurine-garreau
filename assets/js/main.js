@@ -153,20 +153,46 @@
     document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
   }
 
-  // Compétences : un clic sur une étiquette déploie son illustration sous le groupe (une seule ouverte par groupe ;
-  // re-cliquer referme). Le contenu est recopié depuis le <template>, ce qui relance les animations à chaque ouverture.
-  document.querySelectorAll('.skills-row').forEach(row => {
+  // Compétences : dans chaque groupe, une illustration est toujours ouverte et passe toute seule à la suivante
+  // (le 2e groupe est décalé pour ne pas changer en même temps). Un clic choisit l'étiquette ; le défilement
+  // reprend après une pause. Le contenu est recopié depuis le <template>, ce qui relance les animations.
+  const STEP = 4200;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('.skills-row').forEach((row, r) => {
     const panel = row.querySelector('.skill-panel');
     const btns = [...row.querySelectorAll('.tag-btn')];
-    btns.forEach(btn => btn.addEventListener('click', () => {
-      const wasOpen = btn.getAttribute('aria-expanded') === 'true';
-      btns.forEach(b => b.setAttribute('aria-expanded', 'false'));
-      if (wasOpen) { panel.hidden = true; panel.replaceChildren(); return; }
-      btn.setAttribute('aria-expanded', 'true');
-      panel.replaceChildren(btn.parentElement.querySelector('template').content.cloneNode(true));
-      panel.setAttribute('aria-label', btn.textContent);
+    let current = 0, timer = null, visible = false, hold = false;
+    const show = (i, byUser) => {
+      current = i;
+      btns.forEach((b, k) => b.setAttribute('aria-expanded', String(k === i)));
+      panel.replaceChildren(btns[i].parentElement.querySelector('template').content.cloneNode(true));
+      panel.setAttribute('aria-label', btns[i].textContent);
+      panel.setAttribute('aria-live', byUser ? 'polite' : 'off'); // on n'annonce pas chaque changement automatique
       panel.hidden = false;
+      panel.style.setProperty('--step', STEP + 'ms');
+      panel.classList.remove('is-auto'); void panel.offsetWidth;
+      if (!reduce && !hold) panel.classList.add('is-auto'); // barre de progression jusqu'au changement
+    };
+    const schedule = delay => {
+      clearTimeout(timer);
+      if (reduce || !visible || hold) return;
+      timer = setTimeout(() => { show((current + 1) % btns.length); schedule(STEP); }, delay);
+    };
+    show(0);
+    btns.forEach((btn, i) => btn.addEventListener('click', () => {
+      show(i, true);
+      schedule(STEP * 2); // laisse le temps de lire ce qu'on a choisi
     }));
+    // pause tant que la souris ou le clavier est dans le groupe
+    row.addEventListener('pointerenter', () => { hold = true; clearTimeout(timer); panel.classList.remove('is-auto'); });
+    row.addEventListener('pointerleave', () => { hold = false; schedule(STEP); });
+    row.addEventListener('focusin', () => { hold = true; clearTimeout(timer); panel.classList.remove('is-auto'); });
+    row.addEventListener('focusout', e => { if (!row.contains(e.relatedTarget)) { hold = false; schedule(STEP); } });
+    // ne tourne que lorsque le groupe est à l'écran
+    new IntersectionObserver(([e]) => {
+      visible = e.isIntersecting;
+      if (visible) { show(current); schedule(STEP + r * STEP / 2); } else clearTimeout(timer);
+    }, { threshold: .3 }).observe(row);
   });
 
   // Laboratoire : filtres par médium sur le mur d'images

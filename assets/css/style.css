@@ -437,8 +437,14 @@ p strong, li strong { font-weight: 700; }
   background: rgba(255, 255, 255, .85);
   border: 1px solid var(--accent-soft); border-radius: 16px;
   animation: panel-in .45s var(--ease);
+  position: relative; overflow: hidden;
 }
 .skill-panel[hidden] { display: none; }
+.skill-panel > * { animation: panel-in .45s var(--ease); } /* fondu à chaque changement de compétence */
+/* fine barre de progression jusqu'au passage automatique à la compétence suivante */
+.skill-panel::after { content: ""; position: absolute; left: 0; bottom: 0; height: 2px; width: 0; background: var(--accent); opacity: .7; }
+.skill-panel.is-auto::after { animation: panel-progress var(--step, 4s) linear forwards; }
+@keyframes panel-progress { to { width: 100%; } }
 .skill-panel p { margin: 0; font-size: 15.5px; line-height: 1.45; color: var(--ink-soft); max-width: 46ch; }
 @keyframes panel-in { from { opacity: 0; transform: translateY(-8px); } }
 
