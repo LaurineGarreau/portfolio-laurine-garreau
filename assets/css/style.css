@@ -560,6 +560,9 @@ p strong, li strong { font-weight: 700; }
 .meta dd span { display: block; }
 .meta .tag { display: block; padding: 0; border: 0; border-radius: 0; background: none; font-size: 15px; }
 .project-intro .lead { margin: 0; }
+/* Laboratoire : pas de fiche projet à côté, le texte d'intro prend toute la largeur */
+.project-intro--full { grid-template-columns: 1fr; }
+.project-intro--full .lead { max-width: none; }
 /* l'image de couverture est posée comme un grand tirage, avec une légende */
 .project-cover { background: var(--white); padding: 10px; border-radius: var(--frame-radius); aspect-ratio: auto; box-shadow: 0 1px 2px rgba(28, 34, 48, .06), 0 30px 70px -40px rgba(28, 34, 48, .4); }
 .project-cover img { width: 100%; aspect-ratio: 16 / 8; object-fit: cover; border-radius: var(--img-radius); }
