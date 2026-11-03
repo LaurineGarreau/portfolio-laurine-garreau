@@ -50,50 +50,98 @@
           <dt>Durée</dt><dd>En cours</dd>
           <dt>Outils</dt><dd>Varié</dd>
           <dt>Année</dt><dd>2025</dd>
-          <dt>Médiums</dt><dd>3D, illustration, vidéo, branding</dd>
+          <dt>Médiums</dt><dd>3D, illustration, motion, branding</dd>
         </dl>
       </div>
     </div>
   </section>
 
   <div class="wrap">
-    <div class="project-cover reveal" style="background:#b5ada8"><img src="assets/img/labo-room.webp" alt="Chambre isométrique modélisée en 3D" style="object-fit:contain"></div>
-
-    <div class="chapters">
-      <article class="chapter">
-        <div class="chapter-text reveal">
-          <span class="num">01</span>
-          <h2 class="display h3">3D, illustration &amp; motion</h2>
-          <p>Modélisation d'objets du quotidien, infographie sur la vanille, planche de végétation à l'aquarelle et un court film en <strong>stop motion</strong> : autant d'occasions de tester de nouveaux outils et de nouvelles matières.</p>
-          <a class="btn proto" href="https://youtu.be/NrWjRe2v5os?si=iRrzF1Ck7RzfUegH" target="_blank" rel="noopener">Voir la vidéo stop motion ↗</a>
-        </div>
-        <div class="gallery reveal">
-          <button class="shot paper two"><img src="assets/img/labo-vanille.webp" alt="Infographie sur la vanille : consommation et culture" loading="lazy"></button>
-          <button class="shot four grey"><img src="assets/img/labo-polaroid.webp" alt="Appareil photo instantané modélisé en 3D" loading="lazy"></button>
-          <button class="shot paper four"><img src="assets/img/labo-stopmotion.webp" alt="Décor du film en stop motion" loading="lazy"></button>
-          <button class="shot paper two"><img src="assets/img/labo-vegetation.webp" alt="Planche de végétation illustrée" loading="lazy"></button>
-          <button class="shot grey"><img src="assets/img/labo-clavier.webp" alt="Mini clavier modélisé en 3D" loading="lazy"></button>
-          <button class="shot dark"><img src="assets/img/labo-ourson.webp" alt="Ourson en gélatine modélisé en 3D" loading="lazy"></button>
-        </div>
-      </article>
-
-      <article class="chapter">
-        <div class="chapter-text reveal">
-          <span class="num">02</span>
-          <h2 class="display h3">Kirâ</h2>
-          <h3>Identité de marque</h3>
-          <p>Création d'un logotype et de ses déclinaisons : motif, textile brodé, tote bag, stickers. Une exploration typographique autour d'étoiles scintillantes et d'un rose profond.</p>
-        </div>
-        <div class="gallery reveal">
-          <button class="shot four"><img src="assets/img/kira-logo.webp" alt="Logo Kirâ sur fond rose" loading="lazy"></button>
-          <button class="shot two"><img src="assets/img/kira-tshirt.webp" alt="T-shirt brodé Kirâ porté" loading="lazy"></button>
-          <button class="shot"><img src="assets/img/kira-pattern.webp" alt="Motif répété de la lettre K" loading="lazy"></button>
-          <button class="shot"><img src="assets/img/kira-totebag.webp" alt="Tote bag rose Kirâ" loading="lazy"></button>
-          <button class="shot"><img src="assets/img/kira-brode.webp" alt="Détail de la broderie Kirâ" loading="lazy"></button>
-          <button class="shot"><img src="assets/img/kira-stickers.webp" alt="Stickers et cartes Kirâ" loading="lazy"></button>
-        </div>
-      </article>
+    <!-- Le Laboratoire : un mur d'images (en colonnes), filtrable par médium ; les images passent avant le texte -->
+    <div class="lab-filters reveal" role="group" aria-label="Filtrer par médium">
+      <button type="button" class="tag-btn" aria-pressed="true" data-filter="all">Tout</button>
+      <button type="button" class="tag-btn" aria-pressed="false" data-filter="3d">3D</button>
+      <button type="button" class="tag-btn" aria-pressed="false" data-filter="illustration">Illustration</button>
+      <button type="button" class="tag-btn" aria-pressed="false" data-filter="motion">Motion</button>
+      <button type="button" class="tag-btn" aria-pressed="false" data-filter="branding">Branding</button>
     </div>
+    <div class="lab-grid">
+      <figure class="lab-item" data-cat="3d">
+        <button class="shot tint"><img src="assets/img/labo-room.webp" alt="Chambre isométrique modélisée en 3D" loading="lazy"></button>
+        <figcaption><span>Chambre isométrique</span><em>3D</em></figcaption>
+      </figure>
+      <figure class="lab-item" data-cat="3d">
+        <button class="shot"><img src="assets/img/labo-avion.webp" alt="Avion de ligne modélisé en 3D, au-dessus des nuages" loading="lazy"></button>
+        <figcaption><span>Avion de ligne</span><em>3D</em></figcaption>
+      </figure>
+      <figure class="lab-item" data-cat="illustration">
+        <button class="shot"><img src="assets/img/labo-vanille.webp" alt="Infographie sur la vanille : consommation et culture" loading="lazy"></button>
+        <figcaption><span>Infographie — la vanille</span><em>Illustration</em></figcaption>
+      </figure>
+      <figure class="lab-item" data-cat="3d">
+        <button class="shot"><img src="assets/img/labo-cuisine.webp" alt="Cuisine rétro modélisée en 3D" loading="lazy"></button>
+        <figcaption><span>Cuisine rétro</span><em>3D</em></figcaption>
+      </figure>
+      <figure class="lab-item" data-cat="motion">
+        <button class="shot"><img src="assets/img/labo-stopmotion.webp" alt="Décor du film en stop motion" loading="lazy"></button>
+        <figcaption><span>Court film en stop motion</span><em>Motion</em> <a href="https://youtu.be/NrWjRe2v5os?si=iRrzF1Ck7RzfUegH" target="_blank" rel="noopener">Voir le film ↗</a></figcaption>
+      </figure>
+      <figure class="lab-item" data-cat="3d">
+        <button class="shot grey"><img src="assets/img/labo-polaroid.webp" alt="Appareil photo instantané modélisé en 3D" loading="lazy"></button>
+        <figcaption><span>Appareil instantané</span><em>3D</em></figcaption>
+      </figure>
+      <figure class="lab-item" data-cat="3d">
+        <button class="shot"><img src="assets/img/labo-foret.webp" alt="Forêt et rivière en low poly" loading="lazy"></button>
+        <figcaption><span>Forêt low poly</span><em>3D</em></figcaption>
+      </figure>
+      <figure class="lab-item" data-cat="illustration">
+        <button class="shot"><img src="assets/img/labo-vegetation.webp" alt="Planche de végétation illustrée" loading="lazy"></button>
+        <figcaption><span>Planche de végétation</span><em>Illustration</em></figcaption>
+      </figure>
+      <figure class="lab-item" data-cat="3d">
+        <button class="shot grey"><img src="assets/img/labo-clavier.webp" alt="Mini clavier modélisé en 3D" loading="lazy"></button>
+        <figcaption><span>Mini clavier</span><em>3D</em></figcaption>
+      </figure>
+      <figure class="lab-item" data-cat="3d">
+        <button class="shot dark"><img src="assets/img/labo-ourson.webp" alt="Ourson en gélatine modélisé en 3D" loading="lazy"></button>
+        <figcaption><span>Ourson en gélatine</span><em>3D</em></figcaption>
+      </figure>
+    </div>
+
+    <!-- Kirâ : un projet de marque à part, texte à gauche et ses déclinaisons à droite -->
+    <section class="lab-brand">
+      <div class="lab-note" data-cat="branding">
+        <p class="eyebrow">Identité de marque</p>
+        <h2 class="display h3">Kirâ</h2>
+        <p>Un logotype et ses déclinaisons : motif, textile brodé, tote bag, stickers. Une exploration typographique autour d'étoiles scintillantes et d'un rose profond.</p>
+      </div>
+      <div class="lab-grid lab-grid--two">
+        <figure class="lab-item" data-cat="branding">
+          <button class="shot"><img src="assets/img/kira-logo.webp" alt="Logo Kirâ sur fond rose" loading="lazy"></button>
+          <figcaption><span>Logotype</span><em>Branding</em></figcaption>
+        </figure>
+        <figure class="lab-item" data-cat="branding">
+          <button class="shot"><img src="assets/img/kira-tshirt.webp" alt="T-shirt brodé Kirâ porté" loading="lazy"></button>
+          <figcaption><span>T-shirt brodé</span><em>Branding</em></figcaption>
+        </figure>
+        <figure class="lab-item" data-cat="branding">
+          <button class="shot"><img src="assets/img/kira-pattern.webp" alt="Motif répété de la lettre K" loading="lazy"></button>
+          <figcaption><span>Motif</span><em>Branding</em></figcaption>
+        </figure>
+        <figure class="lab-item" data-cat="branding">
+          <button class="shot"><img src="assets/img/kira-totebag.webp" alt="Tote bag rose Kirâ" loading="lazy"></button>
+          <figcaption><span>Tote bag</span><em>Branding</em></figcaption>
+        </figure>
+        <figure class="lab-item" data-cat="branding">
+          <button class="shot"><img src="assets/img/kira-brode.webp" alt="Détail de la broderie Kirâ" loading="lazy"></button>
+          <figcaption><span>Broderie</span><em>Branding</em></figcaption>
+        </figure>
+        <figure class="lab-item" data-cat="branding">
+          <button class="shot"><img src="assets/img/kira-stickers.webp" alt="Stickers et cartes Kirâ" loading="lazy"></button>
+          <figcaption><span>Stickers & cartes</span><em>Branding</em></figcaption>
+        </figure>
+      </div>
+    </section>
 
     <a class="next" href="module-import.html">
       <div><p class="eyebrow">Retour au début</p><span class="display">Module d'import</span></div>

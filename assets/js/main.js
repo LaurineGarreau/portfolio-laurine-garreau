@@ -169,6 +169,26 @@
     }));
   });
 
+  // Laboratoire : filtres par médium sur le mur d'images
+  const labGrid = document.querySelector('.lab-grid');
+  if (labGrid) {
+    const filters = [...document.querySelectorAll('.lab-filters [data-filter]')];
+    filters.forEach(f => f.addEventListener('click', () => {
+      filters.forEach(x => x.setAttribute('aria-pressed', String(x === f)));
+      document.querySelectorAll('.lab-grid [data-cat], .lab-note[data-cat]').forEach(el => {
+        el.hidden = f.dataset.filter !== 'all' && el.dataset.cat !== f.dataset.filter;
+      });
+      // la section Kirâ disparaît en entier quand elle n'a plus rien à montrer
+      const brand = document.querySelector('.lab-brand');
+      if (brand) brand.hidden = !brand.querySelector('.lab-item:not([hidden])');
+      document.querySelectorAll('.lab-grid').forEach(g => {
+        g.classList.remove('is-filtering');
+        void g.offsetWidth; // relance l'apparition
+        g.classList.add('is-filtering');
+      });
+    }));
+  }
+
   // Intro d'ouverture (accueil), sur le modèle de fischundtisch.de :
   // 1. le nom s'écrit lettre par lettre
   // 2. le badge « L » et les objets UX apparaissent en croix au centre
