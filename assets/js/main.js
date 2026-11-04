@@ -322,7 +322,7 @@
     const mx = mr.left + mr.width / 2, my = mr.top + mr.height / 2;
     const START = .86; // échelle du badge au moment du fondu (il se déploie ensuite jusqu'à 1)
     const grow = START * parseFloat(getComputedStyle(mono).fontSize) / parseFloat(getComputedStyle(L).fontSize);
-    const FOLD = 520, TRAVEL = 820, T0 = 180; // repli des lettres, trajet du L, décalage du trajet
+    const FOLD = 520, TRAVEL = 1100, T0 = 180; // repli des lettres, trajet du L (fondu compris), décalage du trajet
 
     // les autres lettres convergent vers le centre, là où le L se rend, en s'effaçant
     letters.slice(1).forEach((s, i, rest) => {
@@ -333,12 +333,18 @@
     });
     L.style.transformOrigin = `${(lr.width - trail) / 2}px 50%`;
     const there = `translate(${mx - lx}px, ${my - ly}px) scale(${grow})`;
+    // le L du nom arrive d'abord à sa place (60 % du trajet), puis se dissout en flou pendant que le L du badge
+    // se forme au même endroit : les deux dessins (linéale / italique) ne se montrent jamais décalés l'un de l'autre
+    const ARRIVE = .6;
     anim(L, [
-      { opacity: 1, transform: 'translate(0, 0) scale(1)' },
-      { opacity: 1, transform: there, offset: .72 },
-      { opacity: 0, transform: there }
-    ], { duration: TRAVEL, delay: T0, easing: easeInOut });
-    anim(mono, [{ opacity: 0 }, { opacity: 1 }], { duration: TRAVEL * .3, delay: T0 + TRAVEL * .62, easing: 'linear' });
+      { opacity: 1, transform: 'translate(0, 0) scale(1)', filter: 'blur(0px)', easing: easeInOut },
+      { opacity: 1, transform: there, filter: 'blur(0px)', offset: ARRIVE, easing: 'ease-out' },
+      { opacity: 0, transform: `${there} scale(1.06)`, filter: 'blur(6px)' }
+    ], { duration: TRAVEL, delay: T0 });
+    anim(mono, [
+      { opacity: 0, transform: 'scale(.9)', filter: 'blur(6px)' },
+      { opacity: 1, transform: 'scale(1)', filter: 'blur(0px)' }
+    ], { duration: TRAVEL * (1 - ARRIVE + .08), delay: T0 + TRAVEL * (ARRIVE - .08), easing: 'ease-out' });
     anim(ring, [{ opacity: 0 }, { opacity: 1 }], { duration: 650, delay: T0 + TRAVEL * .7, easing: easeOut });
     anim(badge, [{ transform: `scale(${START})` }, { transform: 'scale(1)' }],
       { duration: 900, delay: T0 + TRAVEL * .7, easing: easeOut, fill: 'both' });
