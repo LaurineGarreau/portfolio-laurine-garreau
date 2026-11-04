@@ -661,14 +661,22 @@ p strong, li strong { font-weight: 700; }
 .lab-item figcaption span { font-weight: 500; }
 .lab-item figcaption em { font-style: normal; font-family: var(--f-mono); font-size: 11px; letter-spacing: .05em; text-transform: uppercase; color: var(--accent-strong); }
 .lab-item figcaption a { margin-left: auto; font-family: var(--f-mono); font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--ink); }
-.lab-note { padding: clamp(22px, 2.4vw, 32px); border-radius: var(--frame-radius); background: var(--accent-soft); }
-.lab-note h2 { margin: 6px 0 10px; }
-.lab-note p:last-child { margin: 0; color: var(--ink-soft); }
-.lab-brand { display: grid; grid-template-columns: minmax(240px, 1fr) 2.2fr; gap: clamp(14px, 1.6vw, 24px); align-items: start; }
+/* Kirâ : tête de section avec filet (comme les chapitres), texte sans fond, titre dans le rose de la marque */
+.lab-brand { display: grid; grid-template-columns: minmax(240px, 1fr) 2.2fr; column-gap: clamp(24px, 4vw, 64px); align-items: start; padding-top: clamp(24px, 4vw, 60px); }
+.lab-brand-head { grid-column: 1 / -1; margin-bottom: clamp(24px, 3vw, 40px); }
 .lab-brand .lab-note { position: sticky; top: 110px; margin: 0; }
+.lab-brand-title { position: relative; display: inline-block; font-size: clamp(56px, 7vw, 112px); line-height: .95; margin: 0 0 clamp(16px, 2vw, 26px); color: #ca5479; }
+.lab-brand-title .sparkles { position: absolute; top: -.12em; right: -.62em; width: .6em; height: .4em; fill: #ca5479; animation: twinkle 3.2s ease-in-out infinite; }
+@keyframes twinkle { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .45; transform: scale(.82); } }
+.lab-note p { margin: 0 0 22px; color: var(--ink-soft); max-width: 34ch; }
+.lab-note .it { font-family: var(--f-serif); font-style: italic; font-size: 1.12em; color: #ca5479; }
+.swatches { list-style: none; margin: 0; padding: 0; display: flex; gap: 18px; font-family: var(--f-mono); font-size: 11px; letter-spacing: .05em; text-transform: uppercase; color: var(--ink-soft); }
+.swatches li { display: flex; align-items: center; gap: 8px; }
+.swatches span { width: 18px; height: 18px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(28, 34, 48, .14); }
 .lab-grid--two { columns: 2 260px; }
 .lab-item[hidden], .lab-note[hidden], .lab-brand[hidden] { display: none; }
-@media (max-width: 860px) { .lab-brand { grid-template-columns: 1fr; } .lab-brand .lab-note { position: static; } }
+@media (max-width: 860px) { .lab-brand { grid-template-columns: 1fr; } .lab-brand .lab-note { position: static; margin-bottom: 28px; } }
+@media (prefers-reduced-motion: reduce) { .lab-brand-title .sparkles { animation: none; } }
 .lab-grid.is-filtering > * { animation: panel-in .45s var(--ease); }
 
 .next {
