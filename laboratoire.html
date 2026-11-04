@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter+Tight:wght@300..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=202611041733">
+  <link rel="stylesheet" href="assets/css/style.css?v=202611041741">
 </head>
 <body>
 
@@ -51,16 +51,6 @@
   </section>
 
   <div class="wrap">
-    <!-- Entrée en 3D : la chambre (Spline) se déploie et se manipule ; l'image reste dessous tant que la scène charge -->
-    <figure class="lab-stage" data-scene="https://prod.spline.design/yiJeR2hXQ76KMxPp/scene.splinecode">
-      <img class="stage-poster" src="assets/img/labo-room.webp?v=202611031959" alt="Chambre isométrique modélisée en 3D avec Spline">
-      <canvas aria-label="Chambre en 3D : faites-la tourner à la souris"></canvas>
-      <figcaption class="stage-caption"><span>Chambre isométrique</span><em>3D · Spline</em></figcaption>
-      <p class="stage-hint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 12a8 8 0 1 1-2.3-5.6M20 4v4h-4"/></svg>Glisse pour explorer</p>
-      <button type="button" class="stage-start">Toucher pour explorer en 3D</button>
-      <button type="button" class="stage-stop" aria-label="Revenir au défilement">×</button>
-    </figure>
-
     <!-- Le Laboratoire : un mur d'images (en colonnes), filtrable par médium ; les images passent avant le texte -->
     <div class="lab-filters reveal" role="group" aria-label="Filtrer par médium">
       <button type="button" class="tag-btn" aria-pressed="true" data-filter="all">Tout</button>
@@ -70,6 +60,10 @@
       <button type="button" class="tag-btn" aria-pressed="false" data-filter="branding">Branding</button>
     </div>
     <div class="lab-grid">
+      <figure class="lab-item" data-cat="3d">
+        <button class="shot tint"><img src="assets/img/labo-room.webp?v=202611031959" alt="Chambre isométrique modélisée en 3D" loading="lazy"></button>
+        <figcaption><span>Chambre isométrique</span><em>3D · Spline</em> <button type="button" class="spline-open" data-spline="https://prod.spline.design/yiJeR2hXQ76KMxPp/scene.splinecode" data-title="Chambre isométrique en 3D">Voir en 3D ↻</button></figcaption>
+      </figure>
       <figure class="lab-item" data-cat="3d">
         <button class="shot"><img src="assets/img/labo-avion.webp?v=202611031959" alt="Avion de ligne modélisé en 3D, au-dessus des nuages" loading="lazy"></button>
         <figcaption><span>Avion de ligne</span><em>3D</em></figcaption>
@@ -95,8 +89,8 @@
         <figcaption><span>Planche de végétation</span><em>Illustration</em></figcaption>
       </figure>
       <figure class="lab-item" data-cat="3d">
-        <button class="shot grey"><img src="assets/img/labo-clavier.webp?v=202611031959" alt="Mini clavier modélisé en 3D" loading="lazy"></button>
-        <figcaption><span>Mini clavier</span><em>3D · Spline</em> <button type="button" class="spline-open" data-spline="https://prod.spline.design/KxZ-mAGD4YWldTHx/scene.splinecode" data-title="Mini clavier en 3D">Manipuler en 3D ↻</button></figcaption>
+        <button class="shot grey"><img src="assets/img/labo-clavier.webp?v=202611041741" alt="Mini clavier modélisé en 3D" loading="lazy"></button>
+        <figcaption><span>Mini clavier</span><em>3D · Spline</em> <button type="button" class="spline-open" data-spline="https://prod.spline.design/KxZ-mAGD4YWldTHx/scene.splinecode" data-title="Mini clavier en 3D">Voir en 3D ↻</button></figcaption>
       </figure>
       <figure class="lab-item" data-cat="3d">
         <button class="shot dark"><img src="assets/img/labo-ourson.webp?v=202611031959" alt="Ourson en gélatine modélisé en 3D" loading="lazy"></button>
@@ -154,7 +148,7 @@
   </div>
 </footer>
 
-<script type="module" src="assets/js/spline.js?v=202611041734"></script>
+<script type="module" src="assets/js/spline.js?v=202611041741"></script>
 <script src="assets/js/main.js?v=202611032102"></script>
 </body>
 </html>
