@@ -697,7 +697,8 @@ p strong, li strong { font-weight: 700; }
 .spline-frame::before { content: "Chargement de la 3D…"; position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--f-mono); font-size: 12px; letter-spacing: .05em; text-transform: uppercase; color: var(--ink-soft); }
 .spline-modal.is-ready .spline-frame::before { content: none; }
 .spline-frame canvas { position: absolute; inset: 0; width: 100% !important; height: 100% !important; }
-.spline-hint { position: absolute; left: 50%; top: 14px; transform: translateX(-50%); margin: 0; padding: 6px 12px; border-radius: 999px; background: rgba(255, 255, 255, .86); font-family: var(--f-mono); font-size: 11px; letter-spacing: .05em; text-transform: uppercase; pointer-events: none; }
+.spline-hint { position: absolute; left: 50%; top: 14px; transform: translateX(-50%); margin: 0; padding: 7px 14px; border-radius: 999px; background: rgba(255, 255, 255, .9); font-size: 13px; white-space: nowrap; max-width: calc(100% - 28px); overflow: hidden; text-overflow: ellipsis; pointer-events: none; }
+.spline-hint kbd { display: inline-block; min-width: 1.6em; padding: 1px 6px; margin: 0 1px; border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 5px; background: var(--white); font-family: var(--f-mono); font-size: 12px; text-align: center; }
 .spline-close { position: absolute; top: 18px; right: 22px; width: 44px; height: 44px; border: 0; border-radius: 50%; background: var(--white); font-size: 24px; line-height: 1; cursor: pointer; }
 @media (max-width: 860px) { .spline-frame { aspect-ratio: 4 / 5; } }
 

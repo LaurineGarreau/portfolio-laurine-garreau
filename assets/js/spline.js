@@ -17,11 +17,26 @@ if (triggers.length) {
   box.className = 'spline-modal';
   box.setAttribute('role', 'dialog');
   box.setAttribute('aria-modal', 'true');
-  box.innerHTML = '<div class="spline-frame"><canvas></canvas><p class="spline-hint">Survole et clique pour interagir</p></div>'
+  box.innerHTML = '<div class="spline-frame"><canvas></canvas><p class="spline-hint"></p></div>'
     + '<button type="button" class="spline-close" aria-label="Fermer">×</button>';
   document.body.appendChild(box);
   keepWheelForPage(box);
   let app = null, opener = null;
+  const hint = box.querySelector('.spline-hint');
+  const touch = matchMedia('(pointer: coarse)').matches;
+  // touches à taper, écrites dans data-keys (« touche:effet|touche ») ; sans clavier, on invite à toucher les objets
+  const showKeys = t => {
+    hint.replaceChildren();
+    if (touch || !t.dataset.keys) { hint.textContent = 'Touche les objets pour les animer'; return; }
+    hint.append('Tape ');
+    t.dataset.keys.split('|').forEach((pair, i) => {
+      const [key, effect] = pair.split(':');
+      if (i) hint.append(effect ? ' · ' : ' ');
+      const k = document.createElement('kbd'); k.textContent = key; hint.append(k);
+      if (effect) hint.append(' ' + effect);
+    });
+    if (t.dataset.click) hint.append(' ' + t.dataset.click);
+  };
 
   const close = () => {
     box.classList.remove('is-open', 'is-ready');
@@ -31,6 +46,7 @@ if (triggers.length) {
   triggers.forEach(t => t.addEventListener('click', () => {
     opener = t;
     box.setAttribute('aria-label', t.dataset.title || 'Scène 3D');
+    showKeys(t);
     box.classList.add('is-open');
     app = new Application(box.querySelector('canvas'), { htmlContentMode: 'none', renderer: 'webgl' });
     app.load(t.dataset.spline).then(() => {
