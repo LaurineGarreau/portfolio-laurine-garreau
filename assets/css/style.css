@@ -854,7 +854,7 @@ html.intro-on { overflow: hidden; } /* sur html (et non body) pour que la goutti
   .skill-panel .ill { width: 96px; height: 64px; }
   .skill-panel p { font-size: 14.5px; }
   .work { grid-template-columns: 34px 1fr 64px; align-items: center; }
-  .work-thumb { display: block; grid-column: 2 / -1; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; margin-top: 4px; border-radius: var(--img-radius); }
+  .work-thumb { display: block; grid-column: 2 / -1; width: 100%; aspect-ratio: 4 / 3; /* même image et même cadrage que l'aperçu sur ordinateur */ object-fit: cover; margin-top: 4px; border-radius: var(--img-radius); }
   .project-intro, .chapter { grid-template-columns: 1fr; }
   .chapter-text { position: static; }
   .shot, .shot.two, .shot.four { grid-column: span 6; }
