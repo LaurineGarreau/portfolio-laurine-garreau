@@ -868,4 +868,10 @@ html.intro-on { overflow: hidden; } /* sur html (et non body) pour que la goutti
   body { font-size: 16px; }
   .snap-cap { font-size: 10.5px; }
   .project-cover { aspect-ratio: 4 / 3; }
+  /* hiérarchie du premier écran : le nom domine, le métier puis la présentation passent au second plan */
+  .hero-title { font-weight: 600; }
+  .hero-title .line--role { font-size: .64em; margin-top: .12em; }
+  .hero-meta p { font-size: 15px; line-height: 1.55; color: var(--ink-soft); }
+  .hero-meta p strong { color: var(--ink); }
+  .hero-meta .status { font-size: 11.5px; }
 }
