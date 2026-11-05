@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mini Golf Party — Laurine Garreau</title>
+  <meta name="description" content="Projet 05 — Mini Golf Party : un jeu électronique et tangible construit autour d'une carte Arduino Uno, du prototype électronique à l'objet fini.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter+Tight:wght@300..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css?v=202611042003">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <nav class="nav" aria-label="Navigation principale">
+      <a href="index.html#projets" aria-current="page">Projets</a>
+      <a href="index.html#a-propos">À propos</a>
+      <a href="laboratoire.html">Laboratoire</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <a class="badge" href="index.html" aria-label="Accueil — Laurine Garreau">
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <defs><path id="circle" d="M50 50 m-38 0 a38 38 0 1 1 76 0 a38 38 0 1 1 -76 0"/></defs>
+        <text><textPath href="#circle">Garreau · Laurine · UX/UI ·</textPath></text>
+      </svg>
+      <span class="mono">L</span>
+    </a>
+    <div class="header-right">
+      <a class="cv" href="assets/docs/cv-laurine-garreau.pdf" target="_blank" rel="noopener">Mon CV ↗</a>
+      <a class="cv" href="assets/docs/portfolio-laurine-garreau.pdf" target="_blank" rel="noopener">Portfolio PDF ↗</a>
+      <a class="btn" href="index.html#contact">Me contacter</a>
+      <button class="menu-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="project-hero">
+    <div class="wrap">
+      <a class="back" href="index.html#projets"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Tous les projets</a>
+      <div class="rule-head"><span>(05) Étude de cas</span><span>Projet 05 / 06</span></div>
+      <h1 class="display project-title">Mini Golf Party</h1>
+      <p class="project-sub">Jeu électronique sur Arduino</p>
+
+      <div class="project-intro">
+        <p class="lead">Dans le cadre du cours d'Arduino, nous devions créer un <strong>jeu électronique</strong> simple et amusant, uniquement basé sur une carte <strong>Arduino Uno</strong>. Avec Léa, nous avons imaginé un <strong>mini golf tangible</strong> : on incline le plateau avec une manette pour guider la bille jusqu'au drapeau, chronomètre en marche, puis on compare ses temps.</p>
+        <dl class="meta">
+          <dt>Cadre</dt><dd>Cours d'Arduino · UX3S</dd>
+          <dt>Équipe</dt><dd><span>Léa Gawronski</span></dd>
+          <dt>Outils</dt><dd><span class="tag">Arduino Uno</span> <span class="tag">C++</span> <span class="tag">Prototypage</span> <span class="tag">Maquette</span></dd>
+          <dt>Année</dt><dd>2026</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="project-cover reveal"><img src="assets/img/golf-cover.webp?v=202611051200" alt="Mini Golf Party : le jeu fini, plateau vert, panneau Golf Party et chronomètre allumé"></div>
+
+    <div class="chapters">
+      <article class="chapter">
+        <div class="chapter-text reveal">
+          <span class="num">01</span>
+          <h2 class="display h3">Le concept</h2>
+          <p>Faire rouler une bille d'un bout à l'autre du plateau jusqu'au <strong>drapeau rouge</strong>, en franchissant toutes les portes, dans le <strong>temps le plus court</strong>. On joue seul pour battre son record, ou à plusieurs en comparant les chronos.</p>
+          <div class="mores">
+            <details class="more"><summary>Règles du jeu</summary><div class="more-body">
+            <ul>
+              <li>Le joueur appuie sur le <strong>bouton rouge</strong> : le chronomètre démarre et une LED s'allume pour confirmer le départ.</li>
+              <li>Il dirige la bille avec une <strong>manette</strong> qui fait basculer le plateau de gauche à droite.</li>
+              <li>La bille doit franchir toutes les portes pour atteindre le drapeau : le chronomètre s'arrête à l'arrivée.</li>
+              <li>Un nouvel appui sur le bouton <strong>réinitialise</strong> le chrono pour la partie suivante.</li>
+            </ul>
+            </div></details>
+            <details class="more"><summary>Pourquoi le golf ?</summary><div class="more-body">
+            <p>Nous voulions un jeu individuel à la fois <strong>compétitif</strong> et original. Après avoir exploré plusieurs sports miniatures, le golf s'est imposé : il permettait de concevoir un <strong>terrain sur mesure</strong> avec une difficulté ajustable.</p>
+            </div></details>
+          </div>
+        </div>
+        <div class="gallery reveal">
+          <button class="shot"><img src="assets/img/golf-croquis.webp?v=202611051200" alt="Croquis du concept : le plateau, le chronomètre et les trois niveaux de parcours" loading="lazy"></button>
+          <button class="shot"><img src="assets/img/golf-partie.webp?v=202611051200" alt="Une partie en cours : la main sur la manette, prête à lancer le chrono" loading="lazy"></button>
+        </div>
+      </article>
+
+      <article class="chapter">
+        <div class="chapter-text reveal">
+          <span class="num">02</span>
+          <h2 class="display h3">Électronique</h2>
+          <p>Un seul <strong>servomoteur</strong> incline le plateau, piloté par un <strong>potentiomètre</strong> ; un <strong>capteur infrarouge</strong> détecte l'arrivée de la bille et arrête le chronomètre affiché sur un écran 4 chiffres.</p>
+          <div class="mores">
+            <details class="more"><summary>Ce qui a évolué en cours de route</summary><div class="more-body">
+            <ul>
+              <li><strong>Deux servomoteurs → un seul :</strong> gérer deux axes de rotation était trop complexe ; une légère pente fait glisser la bille vers le drapeau.</li>
+              <li><strong>Joystick → potentiomètre :</strong> son mouvement de gauche à droite correspond exactement à celui du servomoteur.</li>
+              <li><strong>270° → 30° :</strong> la rotation d'origine était bien trop ample ; le plateau est à plat au centre et bascule entre <strong>80° et 110°</strong>.</li>
+              <li><strong>Bouton poussoir → capteur infrarouge :</strong> la bille n'était pas assez lourde pour actionner un bouton à l'arrivée.</li>
+            </ul>
+            </div></details>
+            <details class="more"><summary>Chronomètre &amp; LED</summary><div class="more-body">
+            <p>Une fois la base du jeu testée, nous avons ajouté un <strong>afficheur 7 segments</strong> qui fait office de chronomètre pour « gamifier » l'expérience, un ajout essentiel pendant les tests. Une <strong>LED</strong> signale le début de la partie pour que le joueur sache que le chrono est lancé.</p>
+            </div></details>
+            <details class="more"><summary>Composants</summary><div class="more-body">
+            <ul>
+              <li>Carte Arduino Uno, breadboard et câbles</li>
+              <li>Micro-servomoteur 270° et son alimentation 5 V</li>
+              <li>Potentiomètre linéaire</li>
+              <li>Capteur de distance infrarouge</li>
+              <li>Afficheur 4 chiffres (TM1637), LED rouge, bouton</li>
+              <li>Résistances 220 Ω (LED) et 10 kΩ (bouton)</li>
+            </ul>
+            </div></details>
+          </div>
+        </div>
+        <div class="gallery gallery--dense reveal">
+          <button class="shot full"><img src="assets/img/golf-schema.webp?v=202611051200" alt="Schéma du montage électronique : Arduino, servomoteur, potentiomètre, capteur infrarouge et afficheur" loading="lazy"></button>
+          <button class="shot tall"><img src="assets/img/golf-proto-cablage.webp?v=202611051200" alt="Premier câblage sur breadboard" loading="lazy"></button>
+          <button class="shot"><img src="assets/img/golf-proto-carte.webp?v=202611051200" alt="Tests du servomoteur et du potentiomètre sur la carte Arduino" loading="lazy"></button>
+          <button class="shot"><img src="assets/img/golf-schema-main.webp?v=202611051200" alt="Schéma de câblage dessiné à la main" loading="lazy"></button>
+        </div>
+      </article>
+
+      <article class="chapter">
+        <div class="chapter-text reveal">
+          <span class="num">03</span>
+          <h2 class="display h3">Fabrication</h2>
+          <p>Le plateau et ses murs forment le cœur du jeu : les parois guident la bille tout en laissant assez de liberté pour garder le défi. La <strong>difficulté est progressive</strong> : les passages se rétrécissent au fil du parcours.</p>
+          <div class="mores">
+            <details class="more"><summary>L'inclinaison du plateau</summary><div class="more-body">
+            <p>Trop faible, la pente ralentissait la bille et rendait le jeu monotone ; trop forte, elle devenait incontrôlable. Après plusieurs tests, nous avons retenu <strong>5°</strong>. Cette inclinaison est intégrée au socle du servomoteur, et un axe à l'autre extrémité assure une rotation fluide et stable.</p>
+            </div></details>
+            <details class="more"><summary>Un objet sans fils apparents</summary><div class="more-body">
+            <p>Tous les câbles et composants sont rangés sous la plateforme dans un <strong>coffrage</strong> avec passe-câbles : le circuit est protégé et le joueur se concentre uniquement sur le jeu. Matériaux : carton plume, papier couleur, colle, épingles et cure-dents.</p>
+            </div></details>
+          </div>
+        </div>
+        <div class="gallery reveal">
+          <button class="shot full"><img src="assets/img/golf-maquette.webp?v=202611051200" alt="Première maquette du plateau en carton" loading="lazy"></button>
+          <button class="shot"><img src="assets/img/golf-plateau.webp?v=202611051200" alt="Le plateau vert et ses murs monté sur le servomoteur" loading="lazy"></button>
+          <button class="shot"><img src="assets/img/golf-atelier.webp?v=202611051200" alt="Assemblage du plateau et de l'électronique en atelier" loading="lazy"></button>
+        </div>
+      </article>
+
+      <article class="chapter">
+        <div class="chapter-text reveal">
+          <span class="num">04</span>
+          <h2 class="display h3">Résultat</h2>
+          <p>Un jeu prêt à l'emploi : on appuie sur <strong>Démarrer</strong>, la LED s'allume, et le temps s'affiche au-dessus du parcours jusqu'à ce que la bille atteigne le drapeau.</p>
+          <a class="btn btn--solid proto" href="https://youtu.be/BkmEicQo0-U" target="_blank" rel="noopener">Voir une partie en vidéo ↗</a>
+        </div>
+        <div class="gallery gallery--dense reveal">
+          <button class="shot tall"><img src="assets/img/golf-face.webp?v=202611051200" alt="Mini Golf Party vu de face" loading="lazy"></button>
+          <button class="shot"><img src="assets/img/golf-chrono.webp?v=202611051200" alt="L'arrivée : le drapeau, la bille et le chronomètre" loading="lazy"></button>
+          <button class="shot"><img src="assets/img/golf-commandes.webp?v=202611051200" alt="Les commandes : bouton Démarrer / Reset et potentiomètre" loading="lazy"></button>
+          <button class="shot full"><img src="assets/img/golf-parcours.webp?v=202611051200" alt="Le parcours vert et ses portes de plus en plus étroites" loading="lazy"></button>
+        </div>
+      </article>
+    </div>
+
+    <a class="next" href="laboratoire.html">
+      <div><p class="eyebrow">Projet suivant</p><span class="display">Le Laboratoire</span></div>
+      <span class="inline-img"><img src="assets/img/labo-room.webp?v=202611041755" alt=""></span>
+    </a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© <span data-year>2026</span> Garreau Laurine — UX/UI Designer</span>
+    <a href="mailto:garreau.laurine@gmail.com">garreau.laurine@gmail.com</a>
+  </div>
+</footer>
+
+<script src="assets/js/main.js?v=202611042003"></script>
+</body>
+</html>
