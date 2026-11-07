@@ -21,7 +21,13 @@ if (triggers.length) {
     + '<button type="button" class="spline-close" aria-label="Fermer">×</button>';
   document.body.appendChild(box);
   keepWheelForPage(box);
-  let app = null, opener = null;
+  let app = null, opener = null, blocked = [];
+  // touches désactivées pour une scène (data-block-keys="0|…") : arrêtées avant que Spline ne les reçoive
+  // (écouteur posé au chargement, donc avant ceux du runtime)
+  const blockKeys = e => {
+    if (box.classList.contains('is-open') && blocked.includes(e.key)) { e.stopImmediatePropagation(); e.preventDefault(); }
+  };
+  ['keydown', 'keyup', 'keypress'].forEach(type => window.addEventListener(type, blockKeys, { capture: true }));
   const hint = box.querySelector('.spline-hint');
   const touch = matchMedia('(pointer: coarse)').matches;
   // touches à taper, écrites dans data-keys (« touche:effet|touche ») ; sans clavier, on invite à toucher les objets
@@ -45,6 +51,7 @@ if (triggers.length) {
   };
   triggers.forEach(t => t.addEventListener('click', () => {
     opener = t;
+    blocked = (t.dataset.blockKeys || '').split('|').filter(Boolean);
     box.setAttribute('aria-label', t.dataset.title || 'Scène 3D');
     showKeys(t);
     box.classList.add('is-open');
