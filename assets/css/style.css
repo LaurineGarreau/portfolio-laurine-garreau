@@ -934,7 +934,7 @@ html.intro-on { overflow: hidden; } /* sur html (et non body) pour que la goutti
   .hero-screen { min-height: calc(100svh - 68px); padding: 12px 0 28px; }
   .hero-title {
     font-size: calc(100cqw / 3.75); line-height: .9;
-    margin: auto auto auto 0; padding: 78px 0 100px; text-align: left;
+    margin: auto auto auto 0; padding: 78px 0 92px; text-align: left;
   }
   .br-mob { display: inline; }
   .hero-title .line--role { font-size: .5em; margin-top: .1em; }
@@ -944,14 +944,14 @@ html.intro-on { overflow: hidden; } /* sur html (et non body) pour que la goutti
   .hero-meta { flex-direction: column; align-items: flex-start; text-align: left; gap: 18px; }
   .hero-title .deco { left: auto; right: auto; top: auto; bottom: auto; }
   .hero-title .deco--mouse  { height: 64px; top: 6px;     left: 2%; }
-  .hero-title .deco--golf   { height: 60px; top: 2px;     left: 64%; }
+  .hero-title .deco--golf   { height: 60px; top: 0;       left: 42%; }
   .hero-title .deco--ia     { height: min(50px, 12cqw); top: calc(78px + 1.86em); left: auto; right: 1%; }
-  .hero-title .deco--phone  { height: 66px; bottom: 14px; left: 4%; }
-  .hero-title .deco--pencil { height: 50px; bottom: 26px; left: 40%; }
-  .hero-title .deco--bag    { height: 58px; bottom: 4px;  left: 74%; }
+  .hero-title .deco--phone  { height: 66px; bottom: 8px;  left: 8%; }
+  .hero-title .deco--pencil { height: 54px; top: 22px; left: auto; right: 2%; }
+  .hero-title .deco--bag    { height: 60px; bottom: 14px; left: 56%; }
   .deco--mouse .deco-card, .deco--phone .deco-card { left: 0; right: auto; --tx: 0; }
-  .deco--pencil .deco-card { left: 50%; right: auto; --tx: -50%; }
-  .deco--golf .deco-card, .deco--bag .deco-card, .deco--ia .deco-card { left: auto; right: 0; --tx: 0; }
+  .deco--golf .deco-card { left: 50%; right: auto; --tx: -50%; }
+  .deco--bag .deco-card, .deco--ia .deco-card, .deco--pencil .deco-card { left: auto; right: 0; --tx: 0; }
   .topo-wrap--hero .topo { stroke-opacity: .09; }
   .hero-meta p { font-size: 15px; line-height: 1.55; color: var(--ink-soft); }
   .hero-meta p strong { color: var(--ink); }
