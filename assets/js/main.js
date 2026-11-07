@@ -83,6 +83,12 @@
     }, { passive: true });
   }
 
+  // Accueil : les courbes de fond se dessinent une à une, avec des départs et des durées étalés
+  document.querySelectorAll('.topo-wrap--hero path').forEach((path, i, all) => {
+    path.style.setProperty('--d', (.2 + ((i * 37) % all.length) / all.length * 2.8).toFixed(2) + 's');
+    path.style.setProperty('--dur', (3.2 + ((i * 13) % 10) / 10 * 2.4).toFixed(2) + 's');
+  });
+
   // À propos : les courbes de niveau se tracent au fil du défilement
   const topo = document.querySelector('.section--paper .topo-wrap');
   if (topo) {
