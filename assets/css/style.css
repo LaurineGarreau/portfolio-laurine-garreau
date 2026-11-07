@@ -265,12 +265,13 @@ p strong, li strong { font-weight: 700; }
 /* Survol : l'objet se replie sur place en une petite carte (miniature + nom du projet + « découvrir ») ;
    en sortant, la carte grossit légèrement en s'effaçant et l'objet revient */
 .deco-obj { transition: transform .45s cubic-bezier(.34, 1.8, .5, 1), opacity .25s ease; }
+.deco:hover, .deco:focus-visible, .deco.is-pressed { z-index: 5; } /* la carte passe devant les autres objets */
 .deco:hover .deco-obj, .deco:focus-visible .deco-obj, .deco.is-pressed .deco-obj { opacity: 0; transform: scale(.55); }
 .deco-card {
   position: absolute; left: 50%; top: 50%;
   --tx: -50%; translate: var(--tx) -50%;
   display: flex; align-items: center; gap: 12px; white-space: nowrap;
-  padding: 12px 22px 12px 14px; border-radius: 16px; text-align: left;
+  padding: 8px 20px 8px 8px; border-radius: 16px; text-align: left;
   background: var(--cream); border: 1px solid rgba(28, 34, 48, .55);
   box-shadow: 0 6px 18px -10px rgba(28, 34, 48, .35);
   font-family: var(--f-sans); font-style: normal; letter-spacing: 0; line-height: 1.15; color: var(--ink);
@@ -281,10 +282,13 @@ p strong, li strong { font-weight: 700; }
   opacity: 1; scale: 1;
   transition: opacity .2s ease .05s, scale .5s cubic-bezier(.34, 1.5, .5, 1);
 }
-.deco-card img { height: 42px; width: auto; max-width: 54px; object-fit: contain; }
+.deco-card img { width: 76px; height: 54px; object-fit: cover; border-radius: 8px; flex: none; }
 .deco-card-txt { display: flex; flex-direction: column; gap: 3px; }
 .deco-card-name { font-size: 19px; font-weight: 500; }
-.deco-card-go { font-size: 14px; color: var(--ink-soft); }
+.deco-card-go { font-family: var(--f-mono); font-size: 11.5px; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-soft); }
+.deco-card-num { font-family: var(--f-mono); font-size: 12px; font-weight: 400; color: var(--accent-strong); margin-right: .25em; vertical-align: .15em; }
+.deco-card-arrow { color: var(--accent-strong); margin-left: .2em; }
+.deco-card-short { display: none; font-size: 12px; color: var(--ink-soft); }
 .deco:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; border-radius: 8px; }
 .deco.is-pressed .deco-obj { animation: press .55s cubic-bezier(.34, 1.6, .5, 1), float 5s ease-in-out infinite; }
 /* posés sur le haut des minuscules, dans la marge gauche, ou sous le blanc entre deux mots */
@@ -297,10 +301,11 @@ p strong, li strong { font-weight: 700; }
 @media (max-width: 860px) {
   .deco--mouse .deco-card, .deco--phone .deco-card { left: 0; --tx: 0; }
   .deco--figma .deco-card, .deco--cursor .deco-card { left: auto; right: 0; --tx: 0; }
-  .deco-card { padding: 8px 14px 8px 10px; gap: 10px; }
-  .deco-card img { height: 26px; }
+  .deco-card { padding: 6px 14px 6px 6px; gap: 10px; }
+  .deco-card img { width: 56px; height: 40px; }
   .deco-card-name { font-size: 15px; }
-  .deco-card-go { font-size: 12px; }
+  .deco-card-go { display: none; }
+  .deco-card-short { display: block; }
 }
 /* chaque objet flotte à son rythme */
 .deco--mouse .deco-obj  { animation-duration: 5.2s; }
