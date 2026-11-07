@@ -24,7 +24,7 @@
 
   --f-sans: "Bricolage Grotesque", system-ui, sans-serif;
   --f-serif: "Instrument Serif", Georgia, serif;
-  --f-mono: "DM Mono", ui-monospace, monospace; /* légendes, numéros, métadonnées */
+  --f-mono: "Bricolage Grotesque", system-ui, sans-serif; /* légendes, numéros, métadonnées (anciennement DM Mono) */
   --ease: cubic-bezier(.22, .8, .2, 1);
 }
 
