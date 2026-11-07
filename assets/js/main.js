@@ -83,41 +83,20 @@
     }, { passive: true });
   }
 
-  // Accueil : les courbes de fond se dessinent une à une, avec des départs et des durées étalés
-  document.querySelectorAll('.topo-wrap--hero path').forEach((path, i, all) => {
-    // lentement : chaque courbe met 9 à 15 s à se tracer, les départs s'étalent sur 6 s
-    path.style.setProperty('--d', (.3 + ((i * 37) % all.length) / all.length * 6).toFixed(2) + 's');
-    path.style.setProperty('--dur', (9 + ((i * 13) % 10) / 10 * 6).toFixed(2) + 's');
+  // Courbes de niveau (accueil et À propos) : elles se dessinent lentement, une à une,
+  // avec des départs et des durées étalés ; à l'accueil dès l'arrivée, dans l'À propos quand la section apparaît
+  document.querySelectorAll('.topo-wrap').forEach(wrap => {
+    wrap.querySelectorAll('path').forEach((path, i, all) => {
+      // chaque courbe met 9 à 15 s à se tracer, les départs s'étalent sur 6 s
+      path.style.setProperty('--d', (.3 + ((i * 37) % all.length) / all.length * 6).toFixed(2) + 's');
+      path.style.setProperty('--dur', (9 + ((i * 13) % 10) / 10 * 6).toFixed(2) + 's');
+    });
+    if (wrap.classList.contains('topo-wrap--hero')) return;
+    const seen = new IntersectionObserver(entries => {
+      if (entries.some(e => e.isIntersecting)) { wrap.classList.add('is-drawing'); seen.disconnect(); }
+    }, { threshold: .2 });
+    seen.observe(wrap);
   });
-
-  // À propos : les courbes de niveau se tracent au fil du défilement
-  const topo = document.querySelector('.section--paper .topo-wrap');
-  if (topo) {
-    const lines = [...topo.querySelectorAll('path')];
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    // chaque ligne démarre à un moment différent (réparti entre 0 et 45 % du trajet)
-    const starts = lines.map((_, i) => ((i * 37) % 100) / 100 * .45);
-    const SPAN = .55; // part du trajet pendant laquelle une ligne se dessine
-    let ticking = false;
-    const draw = () => {
-      ticking = false;
-      const r = topo.getBoundingClientRect();
-      // 0 quand le haut de la section entre en bas de l'écran, 1 quand son milieu atteint le milieu de l'écran
-      const p = Math.min(1, Math.max(0, (innerHeight - r.top) / (innerHeight / 2 + r.height / 2)));
-      lines.forEach((path, i) => {
-        const t = Math.min(1, Math.max(0, (p - starts[i]) / SPAN));
-        path.style.strokeDashoffset = (1 - t).toFixed(3);
-      });
-    };
-    if (reduce) lines.forEach(path => { path.style.strokeDashoffset = '0'; });
-    else {
-      window.addEventListener('scroll', () => {
-        if (!ticking) { ticking = true; requestAnimationFrame(draw); }
-      }, { passive: true });
-      window.addEventListener('resize', draw);
-      draw();
-    }
-  }
 
   // Contact : copier l'adresse e-mail en un clic
   const copy = document.querySelector('[data-copy]');

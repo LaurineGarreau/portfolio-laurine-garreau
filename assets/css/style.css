@@ -406,9 +406,10 @@ p strong, li strong { font-weight: 700; }
   -webkit-mask-image: radial-gradient(ellipse 75% 62% at 50% 50%, #000 35%, transparent 100%);
   mask-image: radial-gradient(ellipse 75% 62% at 50% 50%, #000 35%, transparent 100%);
 }
-/* lignes blanches, plus claires que le fond, comme sur le CV */
-.topo { width: 100%; height: 100%; fill: none; stroke: #ffffff; stroke-opacity: .95; stroke-width: 1.3; }
-/* le tracé avance avec le défilement (stroke-dashoffset posé par main.js) */
+/* même trait que les courbes de l'accueil : bleu fin et discret */
+.topo { width: 100%; height: 100%; fill: none; stroke: var(--accent-strong); stroke-opacity: .1; stroke-width: 1; }
+/* les courbes se dessinent lentement, une à une (départs et durées posés par main.js) :
+   à l'accueil dès l'arrivée, dans l'À propos quand la section apparaît à l'écran */
 .topo path { vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 1; }
 /* puis tout le relief dérive très lentement */
 .topo g { animation: topo-drift 38s ease-in-out infinite alternate; transform-origin: 50% 50%; }
@@ -417,9 +418,9 @@ p strong, li strong { font-weight: 700; }
   -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 45%, #000 30%, transparent 100%);
   mask-image: radial-gradient(ellipse 80% 70% at 50% 45%, #000 30%, transparent 100%);
 }
-.topo-wrap--hero .topo { stroke: var(--accent-strong); stroke-opacity: .08; stroke-width: 1; transform: scaleX(-1); }
-/* chaque courbe se trace à son tour (durée et départ posés par main.js), une fois l'intro terminée */
-.topo-wrap--hero .topo path { animation: topo-draw var(--dur, 12s) cubic-bezier(.4, .1, .3, 1) var(--d, .3s) both; }
+.topo-wrap--hero .topo { stroke-opacity: .08; transform: scaleX(-1); }
+/* chaque courbe se trace à son tour, une fois l'intro terminée */
+.topo-wrap--hero .topo path, .topo-wrap.is-drawing .topo path { animation: topo-draw var(--dur, 12s) cubic-bezier(.4, .1, .3, 1) var(--d, .3s) both; }
 .intro-on .topo-wrap--hero .topo path { animation: none; }
 @keyframes topo-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
 @keyframes topo-drift {
