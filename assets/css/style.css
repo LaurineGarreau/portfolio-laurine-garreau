@@ -11,8 +11,8 @@
   --line: rgba(28, 34, 48, .14);
   --white: #ffffff;
 
-  --accent: #6b9bd8;        /* bleu du CV : décor, puces, soulignés */
-  --accent-strong: #3f6fb5; /* même bleu, plus profond : textes et icônes */
+  --accent: #7ba7d8;        /* bleu du CV : décor, puces, soulignés */
+  --accent-strong: #7ba7d8; /* le même bleu du CV pour les textes et icônes */
   --accent-soft: #dce8f7;   /* fonds teintés */
 
   --radius: 22px;
@@ -559,7 +559,7 @@ p strong, li strong { font-weight: 700; }
 .ill--curious .bulb { stroke-dasharray: 150; stroke-dashoffset: 150; animation: ill-draw .9s var(--ease) forwards, ill-glow 2s .9s ease-in-out infinite alternate; }
 .ill--curious .bulb-base { stroke: var(--ink-soft); }
 .ill--curious .rays { opacity: 0; animation: ill-rays 2s .9s ease-in-out infinite alternate; }
-@keyframes ill-glow { to { fill: rgba(107, 155, 216, .22); } }
+@keyframes ill-glow { to { fill: rgba(123, 167, 216, .22); } }
 @keyframes ill-rays { from { opacity: 0; transform: scale(.85); } to { opacity: 1; transform: scale(1.05); } }
 /* rigueur : les cases se cochent une à une */
 .ill--rigor .box, .ill--rigor .line { stroke: var(--ink-soft); }

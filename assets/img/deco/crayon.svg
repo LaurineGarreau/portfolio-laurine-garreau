@@ -5,7 +5,7 @@
     <!-- épaisseur -->
     <path d="M84 6h32v104l-16 26-16-26z" transform="translate(7 -4)" fill="#1c2230"/>
     <!-- gomme et virole -->
-    <path fill="#6b9bd8" d="M84 6a6 6 0 0 1 6-6h20a6 6 0 0 1 6 6v10H84z"/>
+    <path fill="#7ba7d8" d="M84 6a6 6 0 0 1 6-6h20a6 6 0 0 1 6 6v10H84z"/>
     <path d="M84 16h32v10H84z"/>
     <!-- corps -->
     <path d="M84 26h32v84H84z"/>

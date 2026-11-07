@@ -8,7 +8,7 @@
     <path d="M58 44h84l8 88H50z"/>
     <path fill="none" d="M58 58h84"/>
     <!-- étiquette prix -->
-    <path fill="#6b9bd8" d="M84 78h26l8 10-8 10H84z"/>
+    <path fill="#7ba7d8" d="M84 78h26l8 10-8 10H84z"/>
     <circle cx="91" cy="88" r="2.6" fill="#f7f8fb"/>
     <!-- clous des anses -->
     <circle cx="80" cy="50" r="3" fill="#1c2230"/>

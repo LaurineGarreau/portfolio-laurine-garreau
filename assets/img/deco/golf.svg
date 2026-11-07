@@ -7,7 +7,7 @@
   <path fill="none" d="M88 122V8"/>
   <!-- drapeau : épaisseur puis tissu -->
   <path d="M88 8c14 6 26-4 44 4v34c-18-8-30 2-44-4z" transform="translate(6 5)" fill="#1c2230"/>
-  <path fill="#6b9bd8" d="M88 8c14 6 26-4 44 4v34c-18-8-30 2-44-4z"/>
+  <path fill="#7ba7d8" d="M88 8c14 6 26-4 44 4v34c-18-8-30 2-44-4z"/>
   <!-- balle -->
   <circle cx="132" cy="114" r="9" transform="translate(4 3)" fill="#1c2230"/>
   <circle cx="132" cy="114" r="9"/>
