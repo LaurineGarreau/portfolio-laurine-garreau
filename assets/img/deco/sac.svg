@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="40 -4 124 150" fill="#f7f8fb" stroke="#1c2230" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round">
+  <g transform="rotate(8 100 75)">
+    <!-- anses -->
+    <path fill="none" d="M80 46V30a20 20 0 0 1 40 0v16"/>
+    <!-- épaisseur -->
+    <path d="M58 44h84l8 88H50z" transform="translate(7 6)" fill="#1c2230"/>
+    <!-- sac -->
+    <path d="M58 44h84l8 88H50z"/>
+    <path fill="none" d="M58 58h84"/>
+    <!-- étiquette prix -->
+    <path fill="#6b9bd8" d="M84 78h26l8 10-8 10H84z"/>
+    <circle cx="91" cy="88" r="2.6" fill="#f7f8fb"/>
+    <!-- clous des anses -->
+    <circle cx="80" cy="50" r="3" fill="#1c2230"/>
+    <circle cx="120" cy="50" r="3" fill="#1c2230"/>
+  </g>
+</svg>

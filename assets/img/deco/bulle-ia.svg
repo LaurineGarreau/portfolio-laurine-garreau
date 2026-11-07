@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="20 6 150 122" fill="#f7f8fb" stroke="#1c2230" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round">
+  <g transform="rotate(-8 95 65)">
+    <!-- épaisseur -->
+    <path d="M44 22h104a14 14 0 0 1 14 14v46a14 14 0 0 1-14 14H82l-26 22 4-22H44a14 14 0 0 1-14-14V36a14 14 0 0 1 14-14z" transform="translate(7 6)" fill="#1c2230"/>
+    <!-- bulle -->
+    <path d="M44 22h104a14 14 0 0 1 14 14v46a14 14 0 0 1-14 14H82l-26 22 4-22H44a14 14 0 0 1-14-14V36a14 14 0 0 1 14-14z"/>
+    <!-- étincelles de l'IA -->
+    <path fill="#6b9bd8" d="M78 38c3 12 6 15 18 18-12 3-15 6-18 18-3-12-6-15-18-18 12-3 15-6 18-18z"/>
+    <path fill="#6b9bd8" d="M116 36c1.6 6.4 3.2 8 9.6 9.6-6.4 1.6-8 3.2-9.6 9.6-1.6-6.4-3.2-8-9.6-9.6 6.4-1.6 8-3.2 9.6-9.6z"/>
+    <path fill="none" d="M108 72h28M108 82h18"/>
+  </g>
+</svg>

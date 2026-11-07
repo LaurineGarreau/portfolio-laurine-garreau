@@ -210,7 +210,7 @@ p strong, li strong { font-weight: 700; }
 .menu-toggle span { display: block; width: 24px; height: 1.5px; background: var(--ink); margin: 6px 0; transition: transform .3s; }
 
 /* Hero ---------------------------------------------------------------------- */
-.hero { position: relative; padding: 0; overflow: hidden; }
+.hero { position: relative; padding: 0; overflow: hidden; isolation: isolate; }
 /* premier écran : tout ce qui présente Laurine tient dans la hauteur de la fenêtre (moins l'en-tête) */
 .hero-screen {
   min-height: min(calc(100svh - 78px), 1000px); /* sur un très grand écran, pas de vide immense sous le titre */
@@ -294,13 +294,19 @@ p strong, li strong { font-weight: 700; }
 /* posés sur le haut des minuscules, dans la marge gauche, ou sous le blanc entre deux mots */
 /* tailles contrastées : la souris grande, le téléphone moyen, le curseur et Figma petits (jamais sous ~55 px sur grand écran) */
 .deco--mouse  { height: .64em; left: -.06em; bottom: .62em; animation-delay: .05s; }
-.deco--figma  { height: .31em; left: .06em;  bottom: .7em;  animation-delay: .15s; }
+.deco--ia     { height: .36em; left: .02em;  bottom: .68em; animation-delay: .15s; }
+.deco--golf   { height: .5em;  left: -.36em; bottom: .6em;  animation-delay: .25s; }
 .deco--phone  { height: .54em; left: -.66em; bottom: .06em; animation-delay: .2s; }
-.deco--cursor { height: .32em; left: -.32em; bottom: -.3em;  animation-delay: .3s; }
+.deco--pencil { height: .4em;  left: -.4em;  bottom: -.36em; animation-delay: .3s; }
+.deco--bag    { height: .42em; left: -.04em; bottom: -.46em; animation-delay: .35s; }
+/* le drapeau est au bord droit du titre : sa carte s'ouvre vers la gauche pour rester dans l'écran */
+.deco--golf .deco-card { left: auto; right: -12px; --tx: 0; }
 /* petit écran : la carte s'aligne sur le bord de l'objet le plus proche du bord de l'écran */
 @media (max-width: 860px) {
   .deco--mouse .deco-card, .deco--phone .deco-card { left: 0; --tx: 0; }
-  .deco--figma .deco-card, .deco--cursor .deco-card { left: auto; right: 0; --tx: 0; }
+  .deco--ia .deco-card, .deco--golf .deco-card, .deco--pencil .deco-card, .deco--bag .deco-card { left: auto; right: 0; --tx: 0; }
+  .deco--pencil { height: .56em; }
+  .deco--bag { height: .56em; bottom: -.6em; }
   .deco-card { padding: 6px 14px 6px 6px; gap: 10px; }
   .deco-card img { width: 56px; height: 40px; }
   .deco-card-name { font-size: 15px; }
@@ -309,9 +315,11 @@ p strong, li strong { font-weight: 700; }
 }
 /* chaque objet flotte à son rythme */
 .deco--mouse .deco-obj  { animation-duration: 5.2s; }
-.deco--figma .deco-obj  { animation-duration: 4.4s; animation-delay: -1.5s; }
+.deco--ia .deco-obj     { animation-duration: 4.4s; animation-delay: -1.5s; }
+.deco--golf .deco-obj   { animation-duration: 5.4s; animation-delay: -2.2s; }
 .deco--phone .deco-obj  { animation-duration: 5.8s; animation-delay: -3s; }
-.deco--cursor .deco-obj { animation-duration: 4.8s; animation-delay: -.8s; }
+.deco--pencil .deco-obj { animation-duration: 4.8s; animation-delay: -.8s; }
+.deco--bag .deco-obj    { animation-duration: 5s;   animation-delay: -3.6s; }
 @keyframes float {
   0%, 100% { translate: 0 0;      rotate: -1deg; }
   50%      { translate: 0 -.03em; rotate: 1deg; }
@@ -403,6 +411,14 @@ p strong, li strong { font-weight: 700; }
 .topo path { vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 1; }
 /* puis tout le relief dérive très lentement */
 .topo g { animation: topo-drift 38s ease-in-out infinite alternate; transform-origin: 50% 50%; }
+/* Accueil : les mêmes courbes, retournées, en trait d'encre très léger, tracées une fois au chargement */
+.topo-wrap--hero {
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 45%, #000 30%, transparent 100%);
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 45%, #000 30%, transparent 100%);
+}
+.topo-wrap--hero .topo { stroke: var(--accent-strong); stroke-opacity: .13; stroke-width: 1; transform: scaleX(-1); }
+.topo-wrap--hero .topo path { animation: topo-draw 3.2s var(--ease) .3s both; }
+@keyframes topo-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
 @keyframes topo-drift {
   from { transform: translate(-1.2%, -.8%) scale(1.02); }
   to   { transform: translate(1.2%, .8%) scale(1.04); }

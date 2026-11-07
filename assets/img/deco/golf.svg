@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="34 -6 132 152" fill="#f7f8fb" stroke="#1c2230" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- green et trou -->
+  <ellipse cx="96" cy="124" rx="56" ry="13" transform="translate(5 4)" fill="#1c2230"/>
+  <ellipse cx="96" cy="124" rx="56" ry="13"/>
+  <ellipse cx="88" cy="123" rx="12" ry="4" fill="#1c2230"/>
+  <!-- mât -->
+  <path fill="none" d="M88 122V8"/>
+  <!-- drapeau : épaisseur puis tissu -->
+  <path d="M88 8c14 6 26-4 44 4v34c-18-8-30 2-44-4z" transform="translate(6 5)" fill="#1c2230"/>
+  <path fill="#6b9bd8" d="M88 8c14 6 26-4 44 4v34c-18-8-30 2-44-4z"/>
+  <!-- balle -->
+  <circle cx="132" cy="114" r="9" transform="translate(4 3)" fill="#1c2230"/>
+  <circle cx="132" cy="114" r="9"/>
+  <path fill="none" stroke-width="1.6" d="M128 111h.1M133 109h.1M135 115h.1"/>
+</svg>

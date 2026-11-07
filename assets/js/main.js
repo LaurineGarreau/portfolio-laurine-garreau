@@ -84,7 +84,7 @@
   }
 
   // À propos : les courbes de niveau se tracent au fil du défilement
-  const topo = document.querySelector('.topo-wrap');
+  const topo = document.querySelector('.section--paper .topo-wrap');
   if (topo) {
     const lines = [...topo.querySelectorAll('path')];
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -351,7 +351,8 @@
     const POP = T0 + TRAVEL + 150; // les objets arrivent quand le badge est formé
 
     const R = Math.min(130, innerWidth * .3), S = 54;
-    const spots = [[0, -R], [R, 0], [-R, 0], [0, R]]; // souris en haut, Figma à droite, téléphone à gauche, curseur en bas
+    // les objets se répartissent en cercle autour du badge, en partant du haut
+    const spots = decos.map((_, i) => { const a = -Math.PI / 2 + i * 2 * Math.PI / decos.length; return [Math.round(R * Math.cos(a)), Math.round(R * Math.sin(a))]; });
     const pieces = decos.map((d, i) => {
       const src = d.querySelector('img');
       const ratio = src.naturalWidth && src.naturalHeight ? src.naturalWidth / src.naturalHeight : 1;

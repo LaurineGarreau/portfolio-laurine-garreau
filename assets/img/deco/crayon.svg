@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="20 0 150 140" fill="#f7f8fb" stroke="#1c2230" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- trait dessiné -->
+  <path fill="none" d="M28 128c14-10 22 4 34-6s16-2 24-8"/>
+  <g transform="rotate(45 100 70)">
+    <!-- épaisseur -->
+    <path d="M84 6h32v104l-16 26-16-26z" transform="translate(7 -4)" fill="#1c2230"/>
+    <!-- gomme et virole -->
+    <path fill="#6b9bd8" d="M84 6a6 6 0 0 1 6-6h20a6 6 0 0 1 6 6v10H84z"/>
+    <path d="M84 16h32v10H84z"/>
+    <!-- corps -->
+    <path d="M84 26h32v84H84z"/>
+    <path fill="none" d="M95 26v84M105 26v84"/>
+    <!-- mine -->
+    <path d="M84 110h32l-16 26z"/>
+    <path fill="#1c2230" d="M95 128h10l-5 8z"/>
+  </g>
+</svg>
