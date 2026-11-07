@@ -401,7 +401,7 @@
       { duration: 700, delay: 150 });
     anim(header, [{ transform: 'translateY(-100%)' }, { transform: 'translateY(0)' }],
       { duration: 800, delay: D - 800, easing: easeOut }); // arrive en même temps que le badge
-    // sur mobile, les objets sont rangés sous le titre : les lignes apparaissent en fondu, sans bouger
+    // sur mobile, les lignes apparaissent en fondu, sans bouger
     const rowMode = matchMedia('(max-width: 520px)').matches;
     lines.forEach((l, i) => anim(l, rowMode ? [{ opacity: 0 }, { opacity: 1 }] : [{ opacity: 0, transform: 'translateY(55vh)' }, { opacity: 1, transform: 'translateY(0)' }],
       { duration: D, delay: i * LAG, easing: easeInOut, fill: 'both' }));

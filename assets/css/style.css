@@ -926,22 +926,23 @@ html.intro-on { overflow: hidden; } /* sur html (et non body) pour que la goutti
   /* hiérarchie du premier écran : le nom domine, le métier puis la présentation passent au second plan */
   .hero-title { font-weight: 600; }
   .hero-title .line--role { font-size: .64em; margin-top: .12em; }
-  /* Premier écran mobile épuré : il remplit l'écran, le nom au centre, la présentation en bas ;
-     les projets n'arrivent qu'au défilement. Les six objets s'alignent en une rangée régulière
-     sous le titre, dans l'ordre des projets (01 → 06), tous à la même taille. */
+  /* Premier écran mobile : il remplit l'écran, tout est calé à droite ; les six objets flottent autour du nom
+     comme sur ordinateur, en profitant de la hauteur (au-dessus du nom, dans la marge de la 2e ligne, en dessous).
+     Les projets n'arrivent qu'au défilement. */
   .hero-screen { min-height: calc(100svh - 68px); padding: 20px 0 28px; }
-  .hero-title { margin-block: auto; padding-top: 0; padding-bottom: 92px; }
-  .hero-title .perch { position: static; }
-  .hero-title .line { animation-name: fade-in; } /* sans déplacement : la rangée d'objets reste en place */
-  .hero-title .deco { width: 46px; height: 46px; bottom: 0; left: calc((100% - 46px) * var(--slot) / 5); }
-  .hero-title .deco-obj { width: 100%; height: 100%; object-fit: contain; }
-  .deco--mouse { --slot: 0; } .deco--phone { --slot: 1; } .deco--ia { --slot: 2; }
-  .deco--bag { --slot: 3; } .deco--golf { --slot: 4; } .deco--pencil { --slot: 5; }
-  .hero-title .deco-card { top: auto; bottom: calc(100% + 8px); translate: var(--tx) 0; }
+  .hero-title { margin: auto 0 auto auto; padding-top: 1.7em; padding-bottom: 96px; text-align: right; }
+  .hero-title .line { animation-name: fade-in; }
+  .hero-meta { flex-direction: column; align-items: flex-end; text-align: right; gap: 18px; }
+  .deco--mouse  { height: 1em;   left: -.2em;  bottom: 1.05em; }
+  .deco--ia     { height: .8em;  left: -.4em;  bottom: 1.25em; }
+  .deco--golf   { height: .95em; left: -.62em; bottom: .62em; }
+  .line--role .deco--phone  { height: 1.55em; left: -3.4em; bottom: -.9em; }
+  .line--role .deco--pencil { height: 1.25em; left: -.7em;  bottom: -1.75em; }
+  .line--role .deco--bag    { height: 1.45em; left: .1em;   bottom: -2.45em; }
   .deco--mouse .deco-card, .deco--phone .deco-card { left: 0; right: auto; --tx: 0; }
-  .deco--ia .deco-card, .deco--bag .deco-card { left: 50%; right: auto; --tx: -50%; }
-  .deco--golf .deco-card, .deco--pencil .deco-card { left: auto; right: 0; --tx: 0; }
-  .topo-wrap--hero .topo { stroke-opacity: .07; }
+  .deco--ia .deco-card { left: 50%; right: auto; --tx: -50%; }
+  .deco--golf .deco-card, .deco--pencil .deco-card, .deco--bag .deco-card { left: auto; right: 0; --tx: 0; }
+  .topo-wrap--hero .topo { stroke-opacity: .09; }
   .hero-meta p { font-size: 15px; line-height: 1.55; color: var(--ink-soft); }
   .hero-meta p strong { color: var(--ink); }
   .hero-meta .status { font-size: 11.5px; }
