@@ -922,7 +922,8 @@ html.intro-on { overflow: hidden; } /* sur html (et non body) pour que la goutti
 @media (max-width: 520px) {
   body { font-size: 16px; }
   .snap-cap { font-size: 10.5px; }
-  .project-cover { aspect-ratio: 4 / 3; }
+  /* couverture : sur mobile, l'image garde son format d'origine (ni rognée, ni de bande blanche dans le cadre) */
+  .project-cover img { aspect-ratio: auto; height: auto; }
   /* hiérarchie du premier écran : le nom domine, le métier puis la présentation passent au second plan */
   .hero-title { font-weight: 600; }
   .hero-title .line--role { font-size: .64em; margin-top: .12em; }
