@@ -923,14 +923,21 @@ html.intro-on { overflow: hidden; } /* sur html (et non body) pour que la goutti
   /* hiérarchie du premier écran : le nom domine, le métier puis la présentation passent au second plan */
   .hero-title { font-weight: 600; }
   .hero-title .line--role { font-size: .64em; margin-top: .12em; }
-  /* objets du titre sur mobile : plus grands par rapport au texte (jamais sous ~40 px), avec de la place au-dessus et en dessous */
-  .hero-title { padding-top: 1em; padding-bottom: 44px; }
-  .deco--mouse  { height: .98em; left: -.16em; bottom: .6em; }
-  .deco--ia     { height: .78em; left: -.5em;  bottom: .72em; }
-  .deco--golf   { height: .92em; left: -.62em; bottom: .54em; }
-  .line--role .deco--phone  { height: 1.5em;  left: -2.6em; bottom: -.7em; }
-  .line--role .deco--pencil { height: 1.2em;  left: -.9em;   bottom: -1.05em; }
-  .line--role .deco--bag    { height: 1.38em; left: -.2em;   bottom: -1.3em; }
+  /* Premier écran mobile épuré : il remplit l'écran, le nom au centre, la présentation en bas ;
+     les projets n'arrivent qu'au défilement. Les six objets s'alignent en une rangée régulière
+     sous le titre, dans l'ordre des projets (01 → 06), tous à la même taille. */
+  .hero-screen { min-height: calc(100svh - 68px); padding: 20px 0 28px; }
+  .hero-title { margin-block: auto; padding-top: 0; padding-bottom: 92px; }
+  .hero-title .perch { position: static; }
+  .hero-title .deco { width: 46px; height: 46px; bottom: 0; left: calc((100% - 46px) * var(--slot) / 5); }
+  .hero-title .deco-obj { width: 100%; height: 100%; object-fit: contain; }
+  .deco--mouse { --slot: 0; } .deco--phone { --slot: 1; } .deco--ia { --slot: 2; }
+  .deco--bag { --slot: 3; } .deco--golf { --slot: 4; } .deco--pencil { --slot: 5; }
+  .hero-title .deco-card { top: auto; bottom: calc(100% + 8px); translate: var(--tx) 0; }
+  .deco--mouse .deco-card, .deco--phone .deco-card { left: 0; right: auto; --tx: 0; }
+  .deco--ia .deco-card, .deco--bag .deco-card { left: 50%; right: auto; --tx: -50%; }
+  .deco--golf .deco-card, .deco--pencil .deco-card { left: auto; right: 0; --tx: 0; }
+  .topo-wrap--hero .topo { stroke-opacity: .07; }
   .hero-meta p { font-size: 15px; line-height: 1.55; color: var(--ink-soft); }
   .hero-meta p strong { color: var(--ink); }
   .hero-meta .status { font-size: 11.5px; }
