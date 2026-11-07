@@ -254,7 +254,7 @@ p strong, li strong { font-weight: 700; }
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 }
-.deco img {
+.deco-obj {
   height: 100%;
   width: auto;
   max-width: none;
@@ -262,20 +262,51 @@ p strong, li strong { font-weight: 700; }
   transition: transform .45s cubic-bezier(.34, 1.8, .5, 1);
   animation: float 5s ease-in-out infinite;
 }
-.deco:hover img, .deco:focus-visible img { transform: translateY(-.06em) rotate(-7deg) scale(1.08); }
+/* Survol : l'objet se replie sur place en une petite carte (miniature + nom du projet + « découvrir ») ;
+   en sortant, la carte grossit légèrement en s'effaçant et l'objet revient */
+.deco-obj { transition: transform .45s cubic-bezier(.34, 1.8, .5, 1), opacity .25s ease; }
+.deco:hover .deco-obj, .deco:focus-visible .deco-obj, .deco.is-pressed .deco-obj { opacity: 0; transform: scale(.55); }
+.deco-card {
+  position: absolute; left: 50%; top: 50%;
+  --tx: -50%; translate: var(--tx) -50%;
+  display: flex; align-items: center; gap: 12px; white-space: nowrap;
+  padding: 12px 22px 12px 14px; border-radius: 16px; text-align: left;
+  background: var(--cream); border: 1px solid rgba(28, 34, 48, .55);
+  box-shadow: 0 6px 18px -10px rgba(28, 34, 48, .35);
+  font-family: var(--f-sans); font-style: normal; letter-spacing: 0; line-height: 1.15; color: var(--ink);
+  opacity: 0; scale: 1.12; pointer-events: none;
+  transition: opacity .3s ease, scale .45s var(--ease);
+}
+.deco:hover .deco-card, .deco:focus-visible .deco-card, .deco.is-pressed .deco-card {
+  opacity: 1; scale: 1;
+  transition: opacity .2s ease .05s, scale .5s cubic-bezier(.34, 1.5, .5, 1);
+}
+.deco-card img { height: 42px; width: auto; max-width: 54px; object-fit: contain; }
+.deco-card-txt { display: flex; flex-direction: column; gap: 3px; }
+.deco-card-name { font-size: 19px; font-weight: 500; }
+.deco-card-go { font-size: 14px; color: var(--ink-soft); }
 .deco:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; border-radius: 8px; }
-.deco.is-pressed img { animation: press .55s cubic-bezier(.34, 1.6, .5, 1), float 5s ease-in-out infinite; }
+.deco.is-pressed .deco-obj { animation: press .55s cubic-bezier(.34, 1.6, .5, 1), float 5s ease-in-out infinite; }
 /* posés sur le haut des minuscules, dans la marge gauche, ou sous le blanc entre deux mots */
 /* tailles contrastées : la souris grande, le téléphone moyen, le curseur et Figma petits (jamais sous ~55 px sur grand écran) */
 .deco--mouse  { height: .64em; left: -.06em; bottom: .62em; animation-delay: .05s; }
 .deco--figma  { height: .31em; left: .06em;  bottom: .7em;  animation-delay: .15s; }
 .deco--phone  { height: .54em; left: -.66em; bottom: .06em; animation-delay: .2s; }
 .deco--cursor { height: .32em; left: -.32em; bottom: -.3em;  animation-delay: .3s; }
+/* petit écran : la carte s'aligne sur le bord de l'objet le plus proche du bord de l'écran */
+@media (max-width: 860px) {
+  .deco--mouse .deco-card, .deco--phone .deco-card { left: 0; --tx: 0; }
+  .deco--figma .deco-card, .deco--cursor .deco-card { left: auto; right: 0; --tx: 0; }
+  .deco-card { padding: 8px 14px 8px 10px; gap: 10px; }
+  .deco-card img { height: 26px; }
+  .deco-card-name { font-size: 15px; }
+  .deco-card-go { font-size: 12px; }
+}
 /* chaque objet flotte à son rythme */
-.deco--mouse img  { animation-duration: 5.2s; }
-.deco--figma img  { animation-duration: 4.4s; animation-delay: -1.5s; }
-.deco--phone img  { animation-duration: 5.8s; animation-delay: -3s; }
-.deco--cursor img { animation-duration: 4.8s; animation-delay: -.8s; }
+.deco--mouse .deco-obj  { animation-duration: 5.2s; }
+.deco--figma .deco-obj  { animation-duration: 4.4s; animation-delay: -1.5s; }
+.deco--phone .deco-obj  { animation-duration: 5.8s; animation-delay: -3s; }
+.deco--cursor .deco-obj { animation-duration: 4.8s; animation-delay: -.8s; }
 @keyframes float {
   0%, 100% { translate: 0 0;      rotate: -1deg; }
   50%      { translate: 0 -.03em; rotate: 1deg; }
