@@ -22,7 +22,7 @@
   --gutter: clamp(16px, 3vw, 40px);
   --max: 1440px;
 
-  --f-sans: "Inter Tight", system-ui, sans-serif;
+  --f-sans: "Bricolage Grotesque", system-ui, sans-serif;
   --f-serif: "Instrument Serif", Georgia, serif;
   --f-mono: "DM Mono", ui-monospace, monospace; /* légendes, numéros, métadonnées */
   --ease: cubic-bezier(.22, .8, .2, 1);
@@ -58,7 +58,7 @@ button { font: inherit; color: inherit; }
 .display {
   font-family: var(--f-sans);
   font-weight: 500;
-  letter-spacing: -.04em;
+  letter-spacing: -.025em;
   line-height: 1;
   margin: 0;
 }
@@ -219,11 +219,11 @@ p strong, li strong { font-weight: 700; }
   container-type: inline-size; /* le titre se règle sur la largeur de la colonne, pas de la fenêtre */
 }
 .hero-title {
-  /* « Laurine Garreau » occupe toute la largeur de la colonne (≈ 6,4 em de long), sans dépasser un écran peu haut */
-  font-size: max(30px, min(calc(100cqw / 6.4), 24vh));
+  /* « Laurine Garreau » occupe toute la largeur de la colonne (≈ 6,6 em de long en Bricolage Grotesque), sans dépasser un écran peu haut */
+  font-size: max(30px, min(calc(100cqw / 6.6), 24vh));
   width: fit-content; margin-inline: auto; /* centré ; la 2e ligne, calée à droite, s'aligne sur la fin du nom */
   font-weight: 500;
-  letter-spacing: -.045em;
+  letter-spacing: -.02em; /* Bricolage Grotesque est déjà serrée en grand : un léger resserrement suffit */
   line-height: .98;
   position: relative;
   padding-top: .32em; /* place pour la souris et Figma au-dessus du nom */
