@@ -229,6 +229,7 @@ p strong, li strong { font-weight: 700; }
   padding-top: .32em; /* place pour la souris et Figma au-dessus du nom */
 }
 .hero-title .line { display: block; white-space: nowrap; }
+.br-mob { display: none; } /* coupure « Laurine / Garreau », sur mobile seulement */
 /* 2e ligne : le métier, en serif italique bleu, calé à droite */
 .hero-title .line--role {
   text-align: right;
@@ -927,22 +928,29 @@ html.intro-on { overflow: hidden; } /* sur html (et non body) pour que la goutti
   /* hiérarchie du premier écran : le nom domine, le métier puis la présentation passent au second plan */
   .hero-title { font-weight: 600; }
   .hero-title .line--role { font-size: .64em; margin-top: .12em; }
-  /* Premier écran mobile : il remplit l'écran, tout est calé à droite ; les six objets flottent autour du nom
-     comme sur ordinateur, en profitant de la hauteur (au-dessus du nom, dans la marge de la 2e ligne, en dessous).
-     Les projets n'arrivent qu'au défilement. */
-  .hero-screen { min-height: calc(100svh - 68px); padding: 20px 0 28px; }
-  .hero-title { margin: auto 0 auto auto; padding-top: 1.7em; padding-bottom: 96px; text-align: right; }
+  /* Premier écran mobile : le nom en très grand sur deux lignes (Laurine / Garreau), le métier dessous,
+     tout calé à droite pour remplir l'écran. Les six objets flottent dans l'espace libre autour :
+     placés par rapport au bloc du titre (ancres neutralisées), au-dessus, dans la marge gauche et en dessous. */
+  .hero-screen { min-height: calc(100svh - 68px); padding: 12px 0 28px; }
+  .hero-title {
+    font-size: calc(100cqw / 3.75); line-height: .9;
+    margin: auto 0 auto auto; padding: 78px 0 100px; text-align: right;
+  }
+  .br-mob { display: inline; }
+  .hero-title .line--role { font-size: .5em; margin-top: .1em; }
   .hero-title .line { animation-name: fade-in; }
+  .hero-title .perch { position: static; }
   .hero-meta { flex-direction: column; align-items: flex-end; text-align: right; gap: 18px; }
-  .deco--mouse  { height: 1em;   left: -.2em;  bottom: 1.05em; }
-  .deco--ia     { height: .8em;  left: -.4em;  bottom: 1.25em; }
-  .deco--golf   { height: .95em; left: -.62em; bottom: .62em; }
-  .line--role .deco--phone  { height: 1.55em; left: -3.4em; bottom: -.9em; }
-  .line--role .deco--pencil { height: 1.25em; left: -.7em;  bottom: -1.75em; }
-  .line--role .deco--bag    { height: 1.45em; left: .1em;   bottom: -2.45em; }
-  .deco--mouse .deco-card, .deco--phone .deco-card { left: 0; right: auto; --tx: 0; }
-  .deco--ia .deco-card { left: 50%; right: auto; --tx: -50%; }
-  .deco--golf .deco-card, .deco--pencil .deco-card, .deco--bag .deco-card { left: auto; right: 0; --tx: 0; }
+  .hero-title .deco { left: auto; right: auto; top: auto; bottom: auto; }
+  .hero-title .deco--mouse  { height: 64px; top: 6px;     left: 2%; }
+  .hero-title .deco--golf   { height: 60px; top: 2px;     left: 64%; }
+  .hero-title .deco--ia     { height: min(50px, 12cqw); top: calc(78px + 1.86em); left: 1%; }
+  .hero-title .deco--phone  { height: 66px; bottom: 14px; left: 4%; }
+  .hero-title .deco--pencil { height: 50px; bottom: 26px; left: 40%; }
+  .hero-title .deco--bag    { height: 58px; bottom: 4px;  left: 74%; }
+  .deco--mouse .deco-card, .deco--phone .deco-card, .deco--ia .deco-card { left: 0; right: auto; --tx: 0; }
+  .deco--pencil .deco-card { left: 50%; right: auto; --tx: -50%; }
+  .deco--golf .deco-card, .deco--bag .deco-card { left: auto; right: 0; --tx: 0; }
   .topo-wrap--hero .topo { stroke-opacity: .09; }
   .hero-meta p { font-size: 15px; line-height: 1.55; color: var(--ink-soft); }
   .hero-meta p strong { color: var(--ink); }
