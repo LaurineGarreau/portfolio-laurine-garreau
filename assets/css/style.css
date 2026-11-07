@@ -853,9 +853,12 @@ html.intro-on { overflow: hidden; } /* sur html (et non body) pour que la goutti
 /* Apparitions au scroll ------------------------------------------------------ */
 .reveal { opacity: 0; transform: translateY(14px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
 .reveal.is-in { opacity: 1; transform: none; }
-.hero-title .line { opacity: 0; transform: translateY(40%); animation: rise 1.1s var(--ease) forwards; }
+/* l'animation ne garde pas son état final (fill « backwards ») : une fois finie, la ligne n'a plus de transform,
+   sinon elle deviendrait le repère des objets positionnés dedans (rangée d'objets sur mobile) */
+.hero-title .line { animation: rise 1.1s var(--ease) backwards; }
 .hero-title .line + .line { animation-delay: .15s; }
-@keyframes rise { to { opacity: 1; transform: none; } }
+@keyframes rise { from { opacity: 0; transform: translateY(40%); } }
+@keyframes fade-in { from { opacity: 0; } }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
@@ -929,6 +932,7 @@ html.intro-on { overflow: hidden; } /* sur html (et non body) pour que la goutti
   .hero-screen { min-height: calc(100svh - 68px); padding: 20px 0 28px; }
   .hero-title { margin-block: auto; padding-top: 0; padding-bottom: 92px; }
   .hero-title .perch { position: static; }
+  .hero-title .line { animation-name: fade-in; } /* sans déplacement : la rangée d'objets reste en place */
   .hero-title .deco { width: 46px; height: 46px; bottom: 0; left: calc((100% - 46px) * var(--slot) / 5); }
   .hero-title .deco-obj { width: 100%; height: 100%; object-fit: contain; }
   .deco--mouse { --slot: 0; } .deco--phone { --slot: 1; } .deco--ia { --slot: 2; }
