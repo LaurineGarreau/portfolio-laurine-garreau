@@ -408,7 +408,7 @@ p strong, li strong { font-weight: 700; }
 }
 /* même trait que les courbes de l'accueil : bleu fin et discret */
 .topo { width: 100%; height: 100%; fill: none; stroke: var(--accent-strong); stroke-opacity: .1; stroke-width: 1; }
-/* les courbes se dessinent lentement, une à une (départs et durées posés par main.js) :
+/* les courbes se dessinent lentement et sans fin, une à une (départs et durées posés par main.js) :
    à l'accueil dès l'arrivée, dans l'À propos quand la section apparaît à l'écran */
 .topo path { vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 1; }
 /* puis tout le relief dérive très lentement */
@@ -420,9 +420,14 @@ p strong, li strong { font-weight: 700; }
 }
 .topo-wrap--hero .topo { stroke-opacity: .08; transform: scaleX(-1); }
 /* chaque courbe se trace à son tour, une fois l'intro terminée */
-.topo-wrap--hero .topo path, .topo-wrap.is-drawing .topo path { animation: topo-draw var(--dur, 12s) cubic-bezier(.4, .1, .3, 1) var(--d, .3s) both; }
+.topo-wrap--hero .topo path, .topo-wrap.is-drawing .topo path { animation: topo-draw var(--dur, 22s) ease-in-out var(--d, .3s) infinite both; }
 .intro-on .topo-wrap--hero .topo path { animation: none; }
-@keyframes topo-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+/* en boucle, sans fin : la courbe se trace, reste un moment, puis s'efface dans le même sens et recommence */
+@keyframes topo-draw {
+  0%       { stroke-dashoffset: 1; }
+  45%, 60% { stroke-dashoffset: 0; }
+  100%     { stroke-dashoffset: -1; }
+}
 @keyframes topo-drift {
   from { transform: translate(-1.2%, -.8%) scale(1.02); }
   to   { transform: translate(1.2%, .8%) scale(1.04); }

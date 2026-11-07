@@ -83,13 +83,14 @@
     }, { passive: true });
   }
 
-  // Courbes de niveau (accueil et À propos) : elles se dessinent lentement, une à une,
+  // Courbes de niveau (accueil et À propos) : elles se dessinent lentement et sans fin, une à une,
   // avec des départs et des durées étalés ; à l'accueil dès l'arrivée, dans l'À propos quand la section apparaît
   document.querySelectorAll('.topo-wrap').forEach(wrap => {
     wrap.querySelectorAll('path').forEach((path, i, all) => {
-      // chaque courbe met 9 à 15 s à se tracer, les départs s'étalent sur 6 s
+      // un cycle (se tracer, rester, s'effacer) dure 18 à 28 s ; les départs s'étalent sur 6 s,
+      // puis les cycles se décalent d'eux-mêmes : il y a toujours des courbes en train de se dessiner
       path.style.setProperty('--d', (.3 + ((i * 37) % all.length) / all.length * 6).toFixed(2) + 's');
-      path.style.setProperty('--dur', (9 + ((i * 13) % 10) / 10 * 6).toFixed(2) + 's');
+      path.style.setProperty('--dur', (18 + ((i * 13) % 10) / 10 * 10).toFixed(2) + 's');
     });
     if (wrap.classList.contains('topo-wrap--hero')) return;
     const seen = new IntersectionObserver(entries => {
