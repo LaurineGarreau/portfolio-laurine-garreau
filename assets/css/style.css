@@ -417,7 +417,7 @@ p strong, li strong { font-weight: 700; }
   -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 45%, #000 30%, transparent 100%);
   mask-image: radial-gradient(ellipse 80% 70% at 50% 45%, #000 30%, transparent 100%);
 }
-.topo-wrap--hero .topo { stroke: var(--accent-strong); stroke-opacity: .17; stroke-width: 1.1; transform: scaleX(-1); }
+.topo-wrap--hero .topo { stroke: var(--accent-strong); stroke-opacity: .08; stroke-width: 1; transform: scaleX(-1); }
 /* chaque courbe se trace à son tour (durée et départ posés par main.js), une fois l'intro terminée */
 .topo-wrap--hero .topo path { animation: topo-draw var(--dur, 4.5s) cubic-bezier(.45, .05, .25, 1) var(--d, .3s) both; }
 .intro-on .topo-wrap--hero .topo path { animation: none; }
@@ -954,7 +954,7 @@ html.intro-on { overflow: hidden; } /* sur html (et non body) pour que la goutti
   .deco--mouse .deco-card, .deco--phone .deco-card { left: 0; right: auto; --tx: 0; }
   .deco--golf .deco-card { left: 50%; right: auto; --tx: -50%; }
   .deco--bag .deco-card, .deco--ia .deco-card, .deco--pencil .deco-card { left: auto; right: 0; --tx: 0; }
-  .topo-wrap--hero .topo { stroke-opacity: .13; }
+  .topo-wrap--hero .topo { stroke-opacity: .07; }
   .hero-meta p { font-size: 15px; line-height: 1.55; color: var(--ink-soft); }
   .hero-meta p strong { color: var(--ink); }
   .hero-meta .status { font-size: 11.5px; }
