@@ -293,20 +293,20 @@ p strong, li strong { font-weight: 700; }
 .deco.is-pressed .deco-obj { animation: press .55s cubic-bezier(.34, 1.6, .5, 1), float 5s ease-in-out infinite; }
 /* posés sur le haut des minuscules, dans la marge gauche, ou sous le blanc entre deux mots */
 /* tailles contrastées : la souris grande, le téléphone moyen, le curseur et Figma petits (jamais sous ~55 px sur grand écran) */
-.deco--mouse  { height: .64em; left: -.06em; bottom: .62em; animation-delay: .05s; }
-.deco--ia     { height: .36em; left: .02em;  bottom: .68em; animation-delay: .15s; }
-.deco--golf   { height: .5em;  left: -.36em; bottom: .6em;  animation-delay: .25s; }
-.deco--phone  { height: .54em; left: -.66em; bottom: .06em; animation-delay: .2s; }
-.deco--pencil { height: .4em;  left: -.4em;  bottom: -.36em; animation-delay: .3s; }
-.deco--bag    { height: .42em; left: -.04em; bottom: -.46em; animation-delay: .35s; }
+/* six objets, un par projet, de tailles variées : trois au-dessus du nom (gauche, milieu, droite),
+   le téléphone dans la marge de la 2e ligne, le crayon et le sac en dessous */
+.deco--mouse  { height: .66em; left: -.2em;  bottom: .6em;  animation-delay: .05s; }
+.deco--ia     { height: .44em; left: -.34em; bottom: .74em; animation-delay: .15s; }
+.deco--golf   { height: .58em; left: -.4em;  bottom: .56em; animation-delay: .25s; }
+.deco--phone  { height: .56em; left: -.7em;  bottom: .04em; animation-delay: .2s; }
+.deco--pencil { height: .44em; left: -.4em;  bottom: -.38em; animation-delay: .3s; }
+.deco--bag    { height: .48em; left: -.02em; bottom: -.5em; animation-delay: .35s; }
 /* le drapeau est au bord droit du titre : sa carte s'ouvre vers la gauche pour rester dans l'écran */
 .deco--golf .deco-card { left: auto; right: -12px; --tx: 0; }
 /* petit écran : la carte s'aligne sur le bord de l'objet le plus proche du bord de l'écran */
 @media (max-width: 860px) {
   .deco--mouse .deco-card, .deco--phone .deco-card { left: 0; --tx: 0; }
-  .deco--ia .deco-card, .deco--golf .deco-card, .deco--pencil .deco-card, .deco--bag .deco-card { left: auto; right: 0; --tx: 0; }
-  .deco--pencil { height: .56em; }
-  .deco--bag { height: .56em; bottom: -.6em; }
+  .deco--golf .deco-card, .deco--pencil .deco-card, .deco--bag .deco-card { left: auto; right: 0; --tx: 0; }
   .deco-card { padding: 6px 14px 6px 6px; gap: 10px; }
   .deco-card img { width: 56px; height: 40px; }
   .deco-card-name { font-size: 15px; }
@@ -923,6 +923,14 @@ html.intro-on { overflow: hidden; } /* sur html (et non body) pour que la goutti
   /* hiérarchie du premier écran : le nom domine, le métier puis la présentation passent au second plan */
   .hero-title { font-weight: 600; }
   .hero-title .line--role { font-size: .64em; margin-top: .12em; }
+  /* objets du titre sur mobile : plus grands par rapport au texte (jamais sous ~40 px), avec de la place au-dessus et en dessous */
+  .hero-title { padding-top: 1em; padding-bottom: 44px; }
+  .deco--mouse  { height: .98em; left: -.16em; bottom: .6em; }
+  .deco--ia     { height: .78em; left: -.5em;  bottom: .72em; }
+  .deco--golf   { height: .92em; left: -.62em; bottom: .54em; }
+  .line--role .deco--phone  { height: 1.5em;  left: -2.6em; bottom: -.7em; }
+  .line--role .deco--pencil { height: 1.2em;  left: -.9em;   bottom: -1.05em; }
+  .line--role .deco--bag    { height: 1.38em; left: -.2em;   bottom: -1.3em; }
   .hero-meta p { font-size: 15px; line-height: 1.55; color: var(--ink-soft); }
   .hero-meta p strong { color: var(--ink); }
   .hero-meta .status { font-size: 11.5px; }
