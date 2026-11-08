@@ -100,6 +100,14 @@
     seen.observe(wrap);
   });
 
+  // Bouton retour : revient à la page précédente du site si on en vient, sinon à la liste des projets
+  const backBtn = document.querySelector('[data-back]');
+  if (backBtn) backBtn.addEventListener('click', e => {
+    let sameSite = false;
+    try { sameSite = document.referrer && new URL(document.referrer).host === location.host; } catch (_) {}
+    if (sameSite && history.length > 1) { e.preventDefault(); history.back(); }
+  });
+
   // Contact : copier l'adresse e-mail en un clic
   const copy = document.querySelector('[data-copy]');
   if (copy) {
