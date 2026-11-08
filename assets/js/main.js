@@ -41,6 +41,11 @@
       setTimeout(() => { window.location.href = d.href; }, 480);
     }));
   }
+  // Retour arrière (page restaurée depuis le cache du navigateur) : les cartes des objets se referment
+  window.addEventListener('pageshow', () => {
+    document.querySelectorAll('.deco.is-pressed').forEach(d => d.classList.remove('is-pressed'));
+    if (document.activeElement && document.activeElement.classList.contains('deco')) document.activeElement.blur();
+  });
 
   // Liste des projets (accueil) : au survol d'un titre, l'image du projet apparaît et suit doucement la souris
   const works = document.querySelector('[data-works]');
