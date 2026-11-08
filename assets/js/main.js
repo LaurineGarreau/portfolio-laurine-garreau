@@ -83,6 +83,14 @@
     }, { passive: true });
   }
 
+  // Courbes de niveau : trait fin à l'écran quelle que soit l'échelle du dessin
+  // (remplace vector-effect: non-scaling-stroke, qui casse le tracé animé sous Safari)
+  const topoStroke = () => document.querySelectorAll('svg.topo').forEach(svg => {
+    const m = svg.getScreenCTM && svg.getScreenCTM();
+    if (m) svg.style.strokeWidth = (1.1 / (Math.hypot(m.a, m.b) || 1)).toFixed(3);
+  });
+  topoStroke(); window.addEventListener('resize', topoStroke);
+
   // Courbes de niveau (accueil et À propos) : elles se dessinent lentement et sans fin, une à une,
   // avec des départs et des durées étalés ; à l'accueil dès l'arrivée, dans l'À propos quand la section apparaît
   document.querySelectorAll('.topo-wrap').forEach(wrap => {
