@@ -59,6 +59,23 @@ if (triggers.length) {
     app.load(t.dataset.spline).then(() => {
       const orbit = app.controls?.orbitControls; // pas d'API publique : on coupe la rotation / le zoom de la caméra
       if (orbit) orbit.enabled = false;
+      // point de vue choisi pour la scène (data-view="azimut,élévation,zoom" en degrés, data-target = objet à viser) :
+      // la caméra tourne autour de l'objet à distance égale, puis le regarde, pour qu'il soit centré
+      if (t.dataset.view) {
+        const [az, el, zf = 1] = t.dataset.view.split(',').map(Number);
+        const cam = app._camera;
+        const target = t.dataset.target && app.findObjectByName(t.dataset.target);
+        const c = target ? { x: target.position.x, y: target.position.y, z: target.position.z } : { x: 0, y: 0, z: 0 };
+        if (cam) {
+          const d = Math.hypot(cam.position.x - c.x, cam.position.y - c.y, cam.position.z - c.z);
+          const A = az * Math.PI / 180, E = el * Math.PI / 180;
+          cam.position.set(c.x + d * Math.cos(E) * Math.sin(A), c.y + d * Math.sin(E), c.z + d * Math.cos(E) * Math.cos(A));
+          cam.lookAt(c.x, c.y, c.z);
+          cam.zoom *= zf;
+          cam.updateProjectionMatrix?.();
+          app.requestRender?.();
+        }
+      }
       box.classList.add('is-ready');
     });
     box.querySelector('.spline-close').focus();
