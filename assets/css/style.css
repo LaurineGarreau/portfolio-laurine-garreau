@@ -1006,3 +1006,6 @@ html.intro-on { overflow: hidden; } /* sur html (et non body) pour que la goutti
 .doc-pages { display: grid; gap: clamp(14px, 2vw, 24px); max-width: 1180px; margin-inline: auto; }
 .doc-pages .shot { grid-column: auto; display: block; width: 100%; }
 .doc-pages .shot img { aspect-ratio: 16 / 9; height: auto; }
+/* CV : une page au format portrait, moins large */
+.doc-pages--portrait { max-width: 860px; }
+.doc-pages--portrait .shot img { aspect-ratio: auto; }
