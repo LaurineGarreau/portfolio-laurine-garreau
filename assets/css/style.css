@@ -46,7 +46,7 @@ body::after {
   opacity: .06; mix-blend-mode: multiply;
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
-img { display: block; max-width: 100%; }
+img { display: block; max-width: 100%; height: auto; } /* width/height dans le HTML : place réservée avant le chargement */
 a { color: inherit; }
 button { font: inherit; color: inherit; }
 ::selection { background: var(--ink); color: var(--cream); }
@@ -130,34 +130,8 @@ p strong, li strong { font-weight: 700; }
 .btn--solid { background: var(--ink); color: var(--cream); }
 .btn--solid::before { background: var(--cream); }
 .btn--solid:hover { color: var(--ink); }
-.btn--light { border-color: var(--cream); color: var(--cream); }
-.btn--light::before { background: var(--cream); }
-.btn--light:hover { color: var(--ink); }
 .btn svg { width: 16px; height: 16px; transition: transform .35s var(--ease); }
 .btn:hover svg { transform: translateX(3px); }
-
-.pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 22px 10px 12px;
-  border: 1px solid var(--ink);
-  border-radius: 999px;
-  background: transparent;
-  cursor: pointer;
-  font-weight: 500;
-  letter-spacing: -.01em;
-  font-size: 16px;
-  transition: background .3s, color .3s, border-color .3s;
-}
-.pill .num {
-  display: grid; place-items: center;
-  width: 34px; height: 34px;
-  border-radius: 50%;
-  background: var(--ink);
-  color: var(--cream);
-  font-size: 12px;
-}
 
 .tag {
   display: inline-flex; align-items: center; gap: 6px;
@@ -194,11 +168,11 @@ p strong, li strong { font-weight: 700; }
 .back-float:hover { background: var(--ink); color: var(--cream); border-color: var(--ink); }
 .back-float:hover svg { transform: translateX(-3px); }
 .back-float:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
-.nav-open .back-float, .lightbox-open .back-float { opacity: 0; pointer-events: none; }
+.nav-open .back-float { opacity: 0; pointer-events: none; }
 @media (max-width: 860px) {
   /* mobile : un rond de 44 px (taille de doigt), sans texte */
   .back-float { top: calc(68px + 12px); width: 44px; padding: 0; justify-content: center; }
-  .back-float span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .back-float span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   body .project-hero { padding-top: 76px; } /* le contenu commence sous le bouton retour */
 }
 
@@ -383,8 +357,6 @@ p strong, li strong { font-weight: 700; }
 }
 .inline-img:nth-of-type(2) { animation-delay: -3s; }
 .inline-img img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--img-radius); }
-.inline-img--round { aspect-ratio: 1; border-radius: 50%; }
-.inline-img--portrait img { object-position: 50% 18%; }
 .hero-hello { position: relative; margin: 0 0 clamp(20px, 5vh, 64px); }
 @keyframes bob { 0%, 100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-.06em) rotate(2deg); } }
 
@@ -414,14 +386,13 @@ p strong, li strong { font-weight: 700; }
   transition: transform .6s var(--ease), box-shadow .6s var(--ease);
 }
 .snap img { width: 100%; aspect-ratio: var(--ar, 4 / 3); object-fit: cover; background: var(--cream-2); }
-.snap-cap, .snap figcaption {
+.snap figcaption {
   display: block; padding: 10px 2px 12px;
   font-family: var(--f-mono); font-size: 11.5px; letter-spacing: .03em; color: var(--ink-soft);
 }
 
 /* Sections ------------------------------------------------------------------ */
 .section { padding: clamp(80px, 11vw, 160px) 0; }
-.section--tight { padding: clamp(56px, 7vw, 100px) 0; }
 /* « À propos » puis « Contact » : leurs marges s'additionnaient (≈ 300 px de vide) */
 #projets { padding-top: clamp(140px, 18vw, 280px); } /* grand écart entre le premier écran et les projets */
 #a-propos { padding-bottom: clamp(40px, 4vw, 64px); }
@@ -639,15 +610,6 @@ p strong, li strong { font-weight: 700; }
    ========================================================================== */
 /* En-tête : retour + filet de légendes, titre, puis une fiche technique façon imprimé */
 .project-hero { padding: clamp(32px, 5vw, 72px) 0 clamp(32px, 4vw, 56px); }
-.back { display: none !important; } /* remplacé par le bouton retour flottant */
-.back-legacy {
-  display: inline-flex; gap: 8px; align-items: center; text-decoration: none;
-  font-family: var(--f-mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase;
-  margin-bottom: clamp(24px, 3vw, 40px);
-}
-.back:hover { color: var(--accent-strong); }
-.back svg { width: 14px; height: 14px; transform: rotate(180deg); transition: transform .4s var(--ease); }
-.back:hover svg { transform: rotate(180deg) translateX(4px); }
 .project-title { font-size: clamp(44px, 7vw, 110px); }
 .project-sub { font-family: var(--f-serif); font-style: italic; font-size: clamp(24px, 2.6vw, 38px); margin: 8px 0 0; line-height: 1.1; }
 .project-intro { display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(28px, 5vw, 80px); margin-top: clamp(32px, 4vw, 56px); align-items: start; }
@@ -963,7 +925,6 @@ html.intro-on { overflow: hidden; } /* sur html (et non body) pour que la goutti
 
 @media (max-width: 520px) {
   body { font-size: 16px; }
-  .snap-cap { font-size: 10.5px; }
   /* couverture : sur mobile, l'image garde son format d'origine (ni rognée, ni de bande blanche dans le cadre) */
   .project-cover img { aspect-ratio: auto; height: auto; }
   /* hiérarchie du premier écran : le nom domine, le métier puis la présentation passent au second plan */

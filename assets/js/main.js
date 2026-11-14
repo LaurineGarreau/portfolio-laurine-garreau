@@ -88,6 +88,10 @@
     }, { passive: true });
   }
 
+  // Courbes de niveau : un seul dessin dans le HTML (accueil), recopié dans l'À propos
+  const topoSrc = document.querySelector('.topo-wrap--hero svg');
+  if (topoSrc) document.querySelectorAll('[data-topo-clone]').forEach(w => w.append(topoSrc.cloneNode(true)));
+
   // Courbes de niveau : trait fin à l'écran quelle que soit l'échelle du dessin
   // (remplace vector-effect: non-scaling-stroke, qui casse le tracé animé sous Safari)
   const topoStroke = () => document.querySelectorAll('svg.topo').forEach(svg => {
